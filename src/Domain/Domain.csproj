@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TestApi2.Domain</RootNamespace>
+    <AssemblyName>TestApi2.Domain</AssemblyName>
+  </PropertyGroup>
+
+</Project>
