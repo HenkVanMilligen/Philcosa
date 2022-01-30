@@ -15,7 +15,7 @@
             },
             new LanguageCode
             {
-                Code = "km_KH",
+                Code = "km-KH",
                 DisplayName= "Khmer"
             },
             new LanguageCode

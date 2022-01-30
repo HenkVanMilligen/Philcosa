@@ -75,11 +75,11 @@ namespace TestApi2.Server
             app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Files")),
-                RequestPath = new PathString("/Files")
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Files")),
+            //    RequestPath = new PathString("/Files")
+            //});
             app.UseRequestLocalizationByCulture();
             app.UseRouting();
             app.UseAuthentication();
