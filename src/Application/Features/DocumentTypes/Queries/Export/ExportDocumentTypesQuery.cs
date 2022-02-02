@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Application.Extensions;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Specifications.Misc;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Specifications.Misc;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Extensions;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.DocumentTypes.Queries.Export
+namespace Philcosa.Application.Features.DocumentTypes.Queries.Export
 {
     public class ExportDocumentTypesQuery : IRequest<Result<string>>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IDateTimeService
     {

@@ -1,12 +1,12 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Shared.Wrapper;
 using MediatR;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Documents.Queries.GetById
+namespace Philcosa.Application.Features.Documents.Queries.GetById
 {
     public class GetDocumentByIdQuery : IRequest<Result<GetDocumentByIdResponse>>
     {

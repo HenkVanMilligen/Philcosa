@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestApi2.Application.Responses.Identity
+namespace Philcosa.Application.Responses.Identity
 {
     public class PermissionResponse
     {

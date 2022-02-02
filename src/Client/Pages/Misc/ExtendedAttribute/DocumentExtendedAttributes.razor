@@ -1,9 +1,9 @@
 ﻿@page "/extended-attributes/{EntityName}/{EntityIdString}"
 @attribute [Authorize(Policy = Permissions.DocumentExtendedAttributes.View)]
 
-@using TestApi2.Domain.Entities.Misc
-@using TestApi2.Domain.Entities.ExtendedAttributes
-@namespace TestApi2.Client.Pages.Misc.ExtendedAttribute
+@using Philcosa.Domain.Entities.Misc
+@using Philcosa.Domain.Entities.ExtendedAttributes
+@namespace Philcosa.Client.Pages.Misc.ExtendedAttribute
 
 @inherits ExtendedAttributes<int, int, Document, DocumentExtendedAttribute>
 

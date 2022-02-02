@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Misc;
+using Philcosa.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Philcosa.Domain.Entities.Misc;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class DocumentRepository : IDocumentRepository
     {

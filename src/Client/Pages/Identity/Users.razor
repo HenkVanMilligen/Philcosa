@@ -1,7 +1,7 @@
 ﻿@page "/identity/users"
 @attribute [Authorize(Policy = Permissions.Users.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Users> _localizer
-@using TestApi2.Application.Responses.Identity
+@using Philcosa.Application.Responses.Identity
 
 <style>
     .mud-table-container {

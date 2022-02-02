@@ -1,12 +1,12 @@
-﻿using TestApi2.Domain.Contracts;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Application.Models.Chat;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Application.Models.Chat;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Infrastructure.Models.Identity
+namespace Philcosa.Infrastructure.Models.Identity
 {
     public class BlazorHeroUser : IdentityUser<string>, IChatUser, IAuditableEntity<string>
     {

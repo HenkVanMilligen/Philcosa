@@ -57,6 +57,67 @@
             <param name="request"></param>
             <returns>Status 200 OK</returns>
         </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleClaimController.GetAll">
+            <summary>
+            Get All Role Claims(e.g. Product Create Permission)
+            </summary>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleClaimController.GetAllByRoleId(System.String)">
+            <summary>
+            Get All Role Claims By Id
+            </summary>
+            <param name="roleId"></param>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleClaimController.Post(Philcosa.Application.Requests.Identity.RoleClaimRequest)">
+            <summary>
+            Add a Role Claim
+            </summary>
+            <param name="request"></param>
+            <returns>Status 200 OK </returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleClaimController.Delete(System.Int32)">
+            <summary>
+            Delete a Role Claim
+            </summary>
+            <param name="id"></param>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleController.GetAll">
+            <summary>
+            Get All Roles (basic, admin etc.)
+            </summary>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleController.Post(Philcosa.Application.Requests.Identity.RoleRequest)">
+            <summary>
+            Add a Role
+            </summary>
+            <param name="request"></param>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleController.Delete(System.String)">
+            <summary>
+            Delete a Role
+            </summary>
+            <param name="id"></param>
+            <returns>Status 200 OK</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleController.GetPermissionsByRoleId(System.String)">
+            <summary>
+            Get Permissions By Role Id
+            </summary>
+            <param name="roleId"></param>
+            <returns>Status 200 Ok</returns>
+        </member>
+        <member name="M:Philcosa.Server.Controllers.Identity.RoleController.Update(Philcosa.Application.Requests.Identity.PermissionRequest)">
+            <summary>
+            Edit a Role Claim
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Philcosa.Server.Controllers.Identity.TokenController.Get(Philcosa.Application.Requests.Identity.TokenRequest)">
             <summary>
             Get Token (Email, Password)
@@ -140,67 +201,6 @@
             </summary>
             <param name="searchString"></param>
             <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleClaimController.GetAll">
-            <summary>
-            Get All Role Claims(e.g. Product Create Permission)
-            </summary>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleClaimController.GetAllByRoleId(System.String)">
-            <summary>
-            Get All Role Claims By Id
-            </summary>
-            <param name="roleId"></param>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleClaimController.Post(Philcosa.Application.Requests.Identity.RoleClaimRequest)">
-            <summary>
-            Add a Role Claim
-            </summary>
-            <param name="request"></param>
-            <returns>Status 200 OK </returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleClaimController.Delete(System.Int32)">
-            <summary>
-            Delete a Role Claim
-            </summary>
-            <param name="id"></param>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleController.GetAll">
-            <summary>
-            Get All Roles (basic, admin etc.)
-            </summary>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleController.Post(Philcosa.Application.Requests.Identity.RoleRequest)">
-            <summary>
-            Add a Role
-            </summary>
-            <param name="request"></param>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleController.Delete(System.String)">
-            <summary>
-            Delete a Role
-            </summary>
-            <param name="id"></param>
-            <returns>Status 200 OK</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleController.GetPermissionsByRoleId(System.String)">
-            <summary>
-            Get Permissions By Role Id
-            </summary>
-            <param name="roleId"></param>
-            <returns>Status 200 Ok</returns>
-        </member>
-        <member name="M:Philcosa.Server.Controllers.RoleController.Update(Philcosa.Application.Requests.Identity.PermissionRequest)">
-            <summary>
-            Edit a Role Claim
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
         </member>
         <member name="M:Philcosa.Server.Controllers.Utilities.AuditsController.GetUserTrailsAsync">
             <summary>

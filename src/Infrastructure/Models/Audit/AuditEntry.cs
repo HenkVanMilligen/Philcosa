@@ -1,11 +1,11 @@
-﻿using TestApi2.Application.Enums;
+﻿using Philcosa.Application.Enums;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TestApi2.Infrastructure.Models.Audit
+namespace Philcosa.Infrastructure.Models.Audit
 {
     public class AuditEntry
     {

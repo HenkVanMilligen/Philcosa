@@ -1,8 +1,8 @@
 ﻿using System;
-using TestApi2.Domain.Contracts;
 using Microsoft.AspNetCore.Components;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Client.Shared.Components
+namespace Philcosa.Client.Shared.Components
 {
     public abstract partial class ExtendedAttributes<TId, TEntityId, TEntity, TExtendedAttribute>
         : ExtendedAttributesBase<TId, TEntityId, TEntity, TExtendedAttribute>

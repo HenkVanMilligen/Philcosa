@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Responses.Audit
+namespace Philcosa.Application.Responses.Audit
 {
     public class AuditResponse
     {

@@ -1,5 +1,4 @@
 ﻿using Blazored.LocalStorage;
-using TestApi2.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Components.Authorization;
 using System;
 using System.Collections.Generic;
@@ -9,9 +8,10 @@ using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TestApi2.Shared.Constants.Storage;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Shared.Constants.Storage;
 
-namespace TestApi2.Client.Infrastructure.Authentication
+namespace Philcosa.Client.Infrastructure.Authentication
 {
     public class BlazorHeroStateProvider : AuthenticationStateProvider
     {
@@ -49,7 +49,7 @@ namespace TestApi2.Client.Infrastructure.Authentication
 
         public async Task<ClaimsPrincipal> GetAuthenticationStateProviderUserAsync()
         {
-            var state = await this.GetAuthenticationStateAsync();
+            var state = await GetAuthenticationStateAsync();
             var authenticationStateProviderUser = state.User;
             return authenticationStateProviderUser;
         }

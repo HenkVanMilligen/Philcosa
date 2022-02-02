@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-namespace TestApi2.Infrastructure.Migrations
+namespace Philcosa.Infrastructure.Migrations
 {
     public partial class initial : Migration
     {

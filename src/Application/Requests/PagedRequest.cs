@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Requests
+﻿namespace Philcosa.Application.Requests
 {
     public abstract class PagedRequest
     {

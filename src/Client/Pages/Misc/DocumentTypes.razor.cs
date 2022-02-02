@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Managers.Misc.DocumentType;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
+using Philcosa.Client.Infrastructure.Managers.Misc.DocumentType;
+using Philcosa.Shared.Constants.Application;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Misc
+namespace Philcosa.Client.Pages.Misc
 {
     public partial class DocumentTypes
     {

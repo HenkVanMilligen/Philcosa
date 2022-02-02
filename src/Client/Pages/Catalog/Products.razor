@@ -1,7 +1,7 @@
 ﻿@page "/catalog/products"
 @attribute [Authorize(Policy = Permissions.Products.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<Products> _localizer
-@using TestApi2.Application.Features.Products.Queries.GetAllPaged;
+@using Philcosa.Application.Features.Products.Queries.GetAllPaged;
 
 <style>
     .mud-table-container {

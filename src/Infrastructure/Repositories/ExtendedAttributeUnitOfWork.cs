@@ -3,23 +3,23 @@ using System.Collections;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Domain.Contracts;
-using TestApi2.Infrastructure.Contexts;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Interfaces.Services;
 using LazyCache;
+using Philcosa.Domain.Contracts;
+using Philcosa.Infrastructure.Contexts;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class ExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> : IExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> where TEntity : AuditableEntity<TEntityId>
     {
         private readonly ICurrentUserService _currentUserService;
-        private readonly BlazorHeroContext _dbContext;
+        private readonly PhilcosaContext _dbContext;
         private bool _disposed;
         private Hashtable _repositories;
         private readonly IAppCache _cache;
 
-        public ExtendedAttributeUnitOfWork(BlazorHeroContext dbContext, ICurrentUserService currentUserService, IAppCache cache)
+        public ExtendedAttributeUnitOfWork(PhilcosaContext dbContext, ICurrentUserService currentUserService, IAppCache cache)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _currentUserService = currentUserService;

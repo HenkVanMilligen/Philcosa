@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.Json;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Services.Storage;
-using TestApi2.Application.Interfaces.Services.Storage.Provider;
-using TestApi2.Application.Interfaces.Serialization.Serializers;
+using Philcosa.Application.Interfaces.Services.Storage;
+using Philcosa.Application.Interfaces.Services.Storage.Provider;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
 
-namespace TestApi2.Infrastructure.Services.Storage
+namespace Philcosa.Infrastructure.Services.Storage
 {
     public class ServerStorageService : IServerStorageService, ISyncServerStorageService
     {

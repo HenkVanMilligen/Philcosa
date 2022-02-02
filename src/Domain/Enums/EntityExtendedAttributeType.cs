@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Domain.Enums
+﻿namespace Philcosa.Domain.Enums
 {
     public enum EntityExtendedAttributeType : byte
     {

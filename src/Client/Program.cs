@@ -1,14 +1,14 @@
-using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Managers.Preferences;
+using Philcosa.Client.Infrastructure.Managers.Preferences;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Client.Infrastructure.Settings;
-using TestApi2.Shared.Constants.Localization;
+using Philcosa.Client.Infrastructure.Settings;
+using Philcosa.Shared.Constants.Localization;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client
+namespace Philcosa.Client
 {
     public static class Program
     {

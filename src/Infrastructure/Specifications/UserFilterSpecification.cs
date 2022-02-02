@@ -1,7 +1,7 @@
-﻿using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Application.Specifications.Base;
+﻿using Philcosa.Application.Specifications.Base;
+using Philcosa.Infrastructure.Models.Identity;
 
-namespace TestApi2.Infrastructure.Specifications
+namespace Philcosa.Infrastructure.Specifications
 {
     public class UserFilterSpecification : HeroSpecification<BlazorHeroUser>
     {

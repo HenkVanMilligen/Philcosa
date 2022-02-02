@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TestApi2.Domain.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Infrastructure.Models.Identity
+namespace Philcosa.Infrastructure.Models.Identity
 {
     public class BlazorHeroRole : IdentityRole, IAuditableEntity<string>
     {

@@ -1,14 +1,14 @@
-﻿using TestApi2.Application.Responses.Identity;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Shared.Constants.Permission;
+﻿using Philcosa.Application.Responses.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Shared.Constants.Permission;
 
-namespace TestApi2.Infrastructure.Helpers
+namespace Philcosa.Infrastructure.Helpers
 {
     public static class ClaimsHelper
     {

@@ -1,10 +1,10 @@
-﻿using TestApi2.Shared.Wrapper;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Client.Infrastructure.Extensions
+namespace Philcosa.Client.Infrastructure.Extensions
 {
     internal static class ResultExtensions
     {

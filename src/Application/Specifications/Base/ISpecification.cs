@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Philcosa.Domain.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using TestApi2.Domain.Contracts;
 
-namespace TestApi2.Application.Specifications.Base
+namespace Philcosa.Application.Specifications.Base
 {
     public interface ISpecification<T> where T : class, IEntity
     {

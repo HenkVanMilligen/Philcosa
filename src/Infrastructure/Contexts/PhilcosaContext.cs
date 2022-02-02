@@ -1,24 +1,24 @@
-﻿using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Models.Chat;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Entities.Catalog;
+﻿using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Models.Chat;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Domain.Entities.ExtendedAttributes;
-using TestApi2.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Domain.Contracts;
+using Philcosa.Domain.Entities.ExtendedAttributes;
+using Philcosa.Infrastructure.Models.Identity;
 
-namespace TestApi2.Infrastructure.Contexts
+namespace Philcosa.Infrastructure.Contexts
 {
-    public class BlazorHeroContext : AuditableContext
+    public class PhilcosaContext : AuditableContext
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTimeService _dateTimeService;
 
-        public BlazorHeroContext(DbContextOptions<BlazorHeroContext> options, ICurrentUserService currentUserService, IDateTimeService dateTimeService)
+        public PhilcosaContext(DbContextOptions<PhilcosaContext> options, ICurrentUserService currentUserService, IDateTimeService dateTimeService)
             : base(options)
         {
             _currentUserService = currentUserService;

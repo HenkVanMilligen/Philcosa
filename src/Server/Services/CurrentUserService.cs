@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Interfaces.Services;
+﻿using Philcosa.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
-namespace TestApi2.Server.Services
+namespace Philcosa.Server.Services
 {
     public class CurrentUserService : ICurrentUserService
     {

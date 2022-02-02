@@ -1,10 +1,4 @@
-﻿using TestApi2.Application.Interfaces.Services;
-using TestApi2.Infrastructure.Contexts;
-using TestApi2.Infrastructure.Helpers;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Shared.Constants.Permission;
-using TestApi2.Shared.Constants.Role;
-using TestApi2.Shared.Constants.User;
+﻿using Philcosa.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
@@ -12,21 +6,27 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Contexts;
+using Philcosa.Infrastructure.Helpers;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Shared.Constants.Role;
+using Philcosa.Shared.Constants.User;
 
-namespace TestApi2.Infrastructure
+namespace Philcosa.Infrastructure
 {
     public class DatabaseSeeder : IDatabaseSeeder
     {
         private readonly ILogger<DatabaseSeeder> _logger;
         private readonly IStringLocalizer<DatabaseSeeder> _localizer;
-        private readonly BlazorHeroContext _db;
+        private readonly PhilcosaContext _db;
         private readonly UserManager<BlazorHeroUser> _userManager;
         private readonly RoleManager<BlazorHeroRole> _roleManager;
 
         public DatabaseSeeder(
             UserManager<BlazorHeroUser> userManager,
             RoleManager<BlazorHeroRole> roleManager,
-            BlazorHeroContext db,
+            PhilcosaContext db,
             ILogger<DatabaseSeeder> logger,
             IStringLocalizer<DatabaseSeeder> localizer)
         {

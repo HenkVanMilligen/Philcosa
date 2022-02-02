@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Client.Infrastructure.Managers
+﻿namespace Philcosa.Client.Infrastructure.Managers
 {
     public interface IManager
     {

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Features.Documents.Commands.AddEdit;
-using TestApi2.Application.Features.Documents.Queries.GetById;
-using TestApi2.Domain.Entities.Misc;
+using Philcosa.Application.Features.Documents.Commands.AddEdit;
+using Philcosa.Application.Features.Documents.Queries.GetById;
+using Philcosa.Domain.Entities.Misc;
 
-namespace TestApi2.Application.Mappings
+namespace Philcosa.Application.Mappings
 {
     public class DocumentProfile : Profile
     {

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Domain.Contracts;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Domain.Contracts;
 
-namespace TestApi2.Application.Interfaces.Repositories
+namespace Philcosa.Application.Interfaces.Repositories
 {
     public interface IRepositoryAsync<T, in TId> where T : class, IEntity<TId>
     {

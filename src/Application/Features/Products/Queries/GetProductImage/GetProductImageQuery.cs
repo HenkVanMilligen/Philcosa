@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Products.Queries.GetProductImage
+namespace Philcosa.Application.Features.Products.Queries.GetProductImage
 {
     public class GetProductImageQuery : IRequest<Result<string>>
     {

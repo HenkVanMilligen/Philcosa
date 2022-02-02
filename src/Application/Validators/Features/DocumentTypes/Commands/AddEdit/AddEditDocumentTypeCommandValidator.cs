@@ -1,8 +1,8 @@
-﻿using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
 
-namespace TestApi2.Application.Validators.Features.DocumentTypes.Commands.AddEdit
+namespace Philcosa.Application.Validators.Features.DocumentTypes.Commands.AddEdit
 {
     public class AddEditDocumentTypeCommandValidator : AbstractValidator<AddEditDocumentTypeCommand>
     {

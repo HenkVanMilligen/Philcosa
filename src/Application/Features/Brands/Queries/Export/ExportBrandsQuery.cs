@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Application.Extensions;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Specifications.Catalog;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Specifications.Catalog;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Extensions;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Brands.Queries.Export
+namespace Philcosa.Application.Features.Brands.Queries.Export
 {
     public class ExportBrandsQuery : IRequest<Result<string>>
     {

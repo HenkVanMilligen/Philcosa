@@ -2,18 +2,18 @@
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services.Storage;
-using TestApi2.Application.Interfaces.Services.Storage.Provider;
-using TestApi2.Application.Interfaces.Serialization.Serializers;
-using TestApi2.Application.Serialization.JsonConverters;
-using TestApi2.Infrastructure.Repositories;
-using TestApi2.Infrastructure.Services.Storage;
-using TestApi2.Application.Serialization.Options;
-using TestApi2.Infrastructure.Services.Storage.Provider;
-using TestApi2.Application.Serialization.Serializers;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Interfaces.Services.Storage;
+using Philcosa.Application.Interfaces.Services.Storage.Provider;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
+using Philcosa.Application.Serialization.JsonConverters;
+using Philcosa.Application.Serialization.Options;
+using Philcosa.Application.Serialization.Serializers;
+using Philcosa.Infrastructure.Repositories;
+using Philcosa.Infrastructure.Services.Storage;
+using Philcosa.Infrastructure.Services.Storage.Provider;
 
-namespace TestApi2.Infrastructure.Extensions
+namespace Philcosa.Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
@@ -40,7 +40,7 @@ namespace TestApi2.Infrastructure.Extensions
         }
 
         public static IServiceCollection AddServerStorage(this IServiceCollection services)
-            => AddServerStorage(services, null);
+            => services.AddServerStorage(null);
 
         public static IServiceCollection AddServerStorage(this IServiceCollection services, Action<SystemTextJsonOptions> configure)
         {

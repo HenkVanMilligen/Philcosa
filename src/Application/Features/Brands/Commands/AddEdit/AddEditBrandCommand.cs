@@ -1,15 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.Brands.Commands.AddEdit
+namespace Philcosa.Application.Features.Brands.Commands.AddEdit
 {
     public partial class AddEditBrandCommand : IRequest<Result<int>>
     {
@@ -50,7 +50,7 @@ namespace TestApi2.Application.Features.Brands.Commands.AddEdit
                 if (brand != null)
                 {
                     brand.Name = command.Name ?? brand.Name;
-                    brand.Tax = (command.Tax == 0) ? brand.Tax : command.Tax;
+                    brand.Tax = command.Tax == 0 ? brand.Tax : command.Tax;
                     brand.Description = command.Description ?? brand.Description;
                     await _unitOfWork.Repository<Brand>().UpdateAsync(brand);
                     await _unitOfWork.CommitAndRemoveCache(cancellationToken, ApplicationConstants.Cache.GetAllBrandsCacheKey);

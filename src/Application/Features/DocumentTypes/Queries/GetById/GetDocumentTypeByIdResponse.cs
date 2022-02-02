@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Features.DocumentTypes.Queries.GetById
+﻿namespace Philcosa.Application.Features.DocumentTypes.Queries.GetById
 {
     public class GetDocumentTypeByIdResponse
     {

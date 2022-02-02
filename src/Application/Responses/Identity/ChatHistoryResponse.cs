@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Responses.Identity
+namespace Philcosa.Application.Responses.Identity
 {
     public partial class ChatHistoryResponse
     {

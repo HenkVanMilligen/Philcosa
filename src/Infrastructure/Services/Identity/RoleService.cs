@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Infrastructure.Helpers;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Shared.Constants.Role;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
@@ -13,10 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Helpers;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Role;
 
-namespace TestApi2.Infrastructure.Services.Identity
+namespace Philcosa.Infrastructure.Services.Identity
 {
     public class RoleService : IRoleService
     {

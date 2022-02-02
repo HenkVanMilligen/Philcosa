@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TestApi2.Application.Interfaces.Chat
+namespace Philcosa.Application.Interfaces.Chat
 {
     public interface IChatUser
     {

@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.Localization
+﻿namespace Philcosa.Shared.Constants.Localization
 {
     public class LanguageCode
     {

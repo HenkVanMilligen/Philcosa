@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TestApi2.Infrastructure.Contexts;
-using TestApi2.Server.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Philcosa.Infrastructure.Contexts;
+using Philcosa.Server.Extensions;
 
-namespace TestApi2.Server
+namespace Philcosa.Server
 {
     public class Program
     {
@@ -22,7 +22,7 @@ namespace TestApi2.Server
 
                 try
                 {
-                    var context = services.GetRequiredService<BlazorHeroContext>();
+                    var context = services.GetRequiredService<PhilcosaContext>();
 
                     if (context.Database.IsSqlServer())
                     {

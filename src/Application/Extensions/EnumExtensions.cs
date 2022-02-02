@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace TestApi2.Application.Extensions
+namespace Philcosa.Application.Extensions
 {
     public static class EnumExtensions
     {

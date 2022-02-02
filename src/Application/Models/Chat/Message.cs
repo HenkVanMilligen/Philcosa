@@ -1,4 +1,4 @@
-namespace TestApi2.Application.Models.Chat
+namespace Philcosa.Application.Models.Chat
 {
     public class Message
     {

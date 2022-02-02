@@ -1,6 +1,6 @@
 ﻿using MudBlazor;
 
-namespace TestApi2.Client.Infrastructure.Settings
+namespace Philcosa.Client.Infrastructure.Settings
 {
     public class BlazorHeroTheme
     {

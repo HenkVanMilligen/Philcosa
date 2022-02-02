@@ -1,6 +1,4 @@
-﻿using TestApi2.Application.Enums;
-using TestApi2.Infrastructure.Models.Audit;
-using TestApi2.Infrastructure.Models.Identity;
+﻿using Philcosa.Application.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Models.Audit;
 
-namespace TestApi2.Infrastructure.Contexts
+namespace Philcosa.Infrastructure.Contexts
 {
     public abstract class AuditableContext : IdentityDbContext<BlazorHeroUser, BlazorHeroRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, BlazorHeroRoleClaim, IdentityUserToken<string>>
     {

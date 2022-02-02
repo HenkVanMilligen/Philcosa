@@ -1,9 +1,9 @@
-﻿using TestApi2.Shared.Constants.Permission;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
+using Philcosa.Shared.Constants.Permission;
 
-namespace TestApi2.Server.Permission
+namespace Philcosa.Server.Permission
 {
     internal class PermissionAuthorizationHandler : AuthorizationHandler<PermissionRequirement>
     {

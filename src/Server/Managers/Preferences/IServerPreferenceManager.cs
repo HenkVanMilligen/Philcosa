@@ -1,6 +1,6 @@
-﻿using TestApi2.Shared.Managers;
+﻿using Philcosa.Shared.Managers;
 
-namespace TestApi2.Server.Managers.Preferences
+namespace Philcosa.Server.Managers.Preferences
 {
     public interface IServerPreferenceManager : IPreferenceManager
     {

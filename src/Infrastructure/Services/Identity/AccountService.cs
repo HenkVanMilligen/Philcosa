@@ -1,15 +1,15 @@
-﻿using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Account;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Account;
+using Philcosa.Application.Requests.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Infrastructure.Services.Identity
+namespace Philcosa.Infrastructure.Services.Identity
 {
     public class AccountService : IAccountService
     {
@@ -32,13 +32,13 @@ namespace TestApi2.Infrastructure.Services.Identity
 
         public async Task<IResult> ChangePasswordAsync(ChangePasswordRequest model, string userId)
         {
-            var user = await this._userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return await Result.FailAsync(_localizer["User Not Found."]);
             }
 
-            var identityResult = await this._userManager.ChangePasswordAsync(
+            var identityResult = await _userManager.ChangePasswordAsync(
                 user,
                 model.Password,
                 model.NewPassword);

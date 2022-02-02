@@ -2,30 +2,30 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Infrastructure.Contexts;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Infrastructure.Contexts;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Infrastructure.Services.Identity
+namespace Philcosa.Infrastructure.Services.Identity
 {
     public class RoleClaimService : IRoleClaimService
     {
         private readonly IStringLocalizer<RoleClaimService> _localizer;
         private readonly IMapper _mapper;
         private readonly ICurrentUserService _currentUserService;
-        private readonly BlazorHeroContext _db;
+        private readonly PhilcosaContext _db;
 
         public RoleClaimService(
             IStringLocalizer<RoleClaimService> localizer,
             IMapper mapper,
             ICurrentUserService currentUserService,
-            BlazorHeroContext db)
+            PhilcosaContext db)
         {
             _localizer = localizer;
             _mapper = mapper;

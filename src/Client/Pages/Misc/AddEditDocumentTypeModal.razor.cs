@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Managers.Misc.DocumentType;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Client.Infrastructure.Managers.Misc.DocumentType;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Misc
+namespace Philcosa.Client.Pages.Misc
 {
     public partial class AddEditDocumentTypeModal
     {

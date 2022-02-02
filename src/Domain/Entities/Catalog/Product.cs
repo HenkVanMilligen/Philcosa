@@ -1,7 +1,7 @@
-﻿using TestApi2.Domain.Contracts;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Domain.Entities.Catalog
+namespace Philcosa.Domain.Entities.Catalog
 {
     public class Product : AuditableEntity<int>
     {

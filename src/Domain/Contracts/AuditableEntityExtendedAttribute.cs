@@ -1,8 +1,9 @@
 ﻿#nullable enable
+using Philcosa.Domain.Contracts;
+using Philcosa.Domain.Enums;
 using System;
-using TestApi2.Domain.Enums;
 
-namespace TestApi2.Domain.Contracts
+namespace Philcosa.Domain.Contracts
 {
     public abstract class AuditableEntityExtendedAttribute<TId, TEntityId, TEntity>
         : AuditableEntity<TId>, IEntityAuditableExtendedAttribute<TId, TEntityId, TEntity>

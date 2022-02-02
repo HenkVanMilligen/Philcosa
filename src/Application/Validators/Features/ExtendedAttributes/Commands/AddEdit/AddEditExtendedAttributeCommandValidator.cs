@@ -1,11 +1,11 @@
 ﻿using System;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
 using FluentValidation;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Domain.Enums;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit
+namespace Philcosa.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit
 {
     public class AddEditExtendedAttributeCommandValidatorLocalization
     {

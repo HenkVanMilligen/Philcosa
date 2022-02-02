@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Interfaces.Serialization.Serializers;
+﻿using Philcosa.Application.Interfaces.Serialization.Serializers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace TestApi2.Infrastructure.Extensions
+namespace Philcosa.Infrastructure.Extensions
 {
     public static class ValueConversionExtensions
     {

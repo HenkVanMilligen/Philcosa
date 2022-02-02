@@ -1,6 +1,6 @@
-﻿using TestApi2.Application.Requests;
+﻿using Philcosa.Application.Requests;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IUploadService
     {

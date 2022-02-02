@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Domain.Contracts
+namespace Philcosa.Domain.Contracts
 {
     public abstract class AuditableEntity<TId> : IAuditableEntity<TId>
     {

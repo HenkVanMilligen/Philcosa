@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Models.Chat;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Models.Chat;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Server.Hubs
+namespace Philcosa.Server.Hubs
 {
     public class SignalRHub : Hub
     {

@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Requests.Mail;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Philcosa.Application.Requests.Mail;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IMailService
     {

@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Services.Storage;
-using TestApi2.Server.Settings;
-using TestApi2.Shared.Constants.Storage;
-using TestApi2.Shared.Settings;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Interfaces.Services.Storage;
 using Microsoft.Extensions.Localization;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Settings;
+using Philcosa.Shared.Constants.Storage;
+using Philcosa.Server.Settings;
 
-namespace TestApi2.Server.Managers.Preferences
+namespace Philcosa.Server.Managers.Preferences
 {
     public class ServerPreferenceManager : IServerPreferenceManager
     {

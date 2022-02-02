@@ -1,11 +1,12 @@
-﻿using TestApi2.Application.Requests.Identity;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Requests.Identity;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Extensions;
+using Philcosa.Client.Infrastructure.Routes;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.Account
+namespace Philcosa.Client.Infrastructure.Managers.Identity.Account
 {
     public class AccountManager : IAccountManager
     {
@@ -18,25 +19,25 @@ namespace TestApi2.Client.Infrastructure.Managers.Identity.Account
 
         public async Task<IResult> ChangePasswordAsync(ChangePasswordRequest model)
         {
-            var response = await _httpClient.PutAsJsonAsync(Routes.AccountEndpoints.ChangePassword, model);
+            var response = await _httpClient.PutAsJsonAsync(AccountEndpoints.ChangePassword, model);
             return await response.ToResult();
         }
 
         public async Task<IResult> UpdateProfileAsync(UpdateProfileRequest model)
         {
-            var response = await _httpClient.PutAsJsonAsync(Routes.AccountEndpoints.UpdateProfile, model);
+            var response = await _httpClient.PutAsJsonAsync(AccountEndpoints.UpdateProfile, model);
             return await response.ToResult();
         }
 
         public async Task<IResult<string>> GetProfilePictureAsync(string userId)
         {
-            var response = await _httpClient.GetAsync(Routes.AccountEndpoints.GetProfilePicture(userId));
+            var response = await _httpClient.GetAsync(AccountEndpoints.GetProfilePicture(userId));
             return await response.ToResult<string>();
         }
 
         public async Task<IResult<string>> UpdateProfilePictureAsync(UpdateProfilePictureRequest request, string userId)
         {
-            var response = await _httpClient.PostAsJsonAsync(Routes.AccountEndpoints.UpdateProfilePicture(userId), request);
+            var response = await _httpClient.PostAsJsonAsync(AccountEndpoints.UpdateProfilePicture(userId), request);
             return await response.ToResult<string>();
         }
     }

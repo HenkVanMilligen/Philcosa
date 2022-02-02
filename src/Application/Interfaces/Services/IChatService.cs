@@ -1,11 +1,11 @@
-﻿using TestApi2.Application.Responses.Identity;
-using TestApi2.Shared.Wrapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Application.Models.Chat;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Application.Models.Chat;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IChatService
     {

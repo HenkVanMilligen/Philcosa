@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TestApi2.Shared.Wrapper
+namespace Philcosa.Shared.Wrapper
 {
     public class Result : IResult
     {

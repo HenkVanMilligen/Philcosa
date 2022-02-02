@@ -1,8 +1,8 @@
 ﻿using System;
-using TestApi2.Domain.Contracts;
 using Microsoft.AspNetCore.Identity;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Infrastructure.Models.Identity
+namespace Philcosa.Infrastructure.Models.Identity
 {
     public class BlazorHeroRoleClaim : IdentityRoleClaim<string>, IAuditableEntity<int>
     {

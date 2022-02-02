@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>TestApi2.Shared</name>
+        <name>Philcosa.Shared</name>
     </assembly>
     <members>
-        <member name="M:TestApi2.Shared.Constants.Permission.Permissions.GetRegisteredPermissions">
+        <member name="M:Philcosa.Shared.Constants.Permission.Permissions.GetRegisteredPermissions">
             <summary>
             Returns a list of Permissions.
             </summary>

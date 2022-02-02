@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using Blazored.LocalStorage;
-using TestApi2.Client.Infrastructure.Settings;
 using MudBlazor;
 using System.Threading.Tasks;
-using TestApi2.Shared.Constants.Storage;
-using TestApi2.Shared.Settings;
-using TestApi2.Shared.Wrapper;
 using Microsoft.Extensions.Localization;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Settings;
+using Philcosa.Shared.Constants.Storage;
+using Philcosa.Client.Infrastructure.Settings;
 
-namespace TestApi2.Client.Infrastructure.Managers.Preferences
+namespace Philcosa.Client.Infrastructure.Managers.Preferences
 {
     public class ClientPreferenceManager : IClientPreferenceManager
     {

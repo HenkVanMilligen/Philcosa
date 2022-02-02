@@ -1,8 +1,8 @@
-﻿using TestApi2.Application.Models.Chat;
-using System.Collections.Generic;
-using TestApi2.Application.Interfaces.Chat;
+﻿using System.Collections.Generic;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Application.Models.Chat;
 
-namespace TestApi2.Application.Responses.Identity
+namespace Philcosa.Application.Responses.Identity
 {
     public class ChatUserResponse
     {

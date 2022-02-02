@@ -1,5 +1,5 @@
-﻿using TestApi2.Application.Requests.Identity;
-using TestApi2.Client.Extensions;
+﻿using Philcosa.Application.Requests.Identity;
+using Philcosa.Client.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
@@ -7,9 +7,9 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Shared.Constants.Storage;
+using Philcosa.Shared.Constants.Storage;
 
-namespace TestApi2.Client.Pages.Identity
+namespace Philcosa.Client.Pages.Identity
 {
     public partial class Profile
     {

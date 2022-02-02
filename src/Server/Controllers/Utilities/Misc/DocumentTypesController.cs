@@ -1,14 +1,15 @@
 ﻿using System.Threading.Tasks;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Application.Features.DocumentTypes.Commands.Delete;
-using TestApi2.Application.Features.DocumentTypes.Queries.Export;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetById;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Application.Features.DocumentTypes.Commands.Delete;
+using Philcosa.Application.Features.DocumentTypes.Queries.Export;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Server.Controllers;
 
-namespace TestApi2.Server.Controllers.Utilities.Misc
+namespace Philcosa.Server.Controllers.Utilities.Misc
 {
     [Route("api/[controller]")]
     [ApiController]

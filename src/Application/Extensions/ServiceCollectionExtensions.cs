@@ -3,16 +3,16 @@ using System.Linq;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.Delete;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.Export;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAll;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetById;
-using TestApi2.Domain.Contracts;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAll;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetById;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.Export;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.Delete;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Extensions
+namespace Philcosa.Application.Extensions
 {
     public static class ServiceCollectionExtensions
     {

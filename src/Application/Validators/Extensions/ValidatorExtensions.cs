@@ -1,8 +1,8 @@
-﻿using TestApi2.Application.Interfaces.Serialization.Serializers;
+﻿using Philcosa.Application.Interfaces.Serialization.Serializers;
 using FluentValidation;
 using FluentValidation.Validators;
 
-namespace TestApi2.Application.Validators.Extensions
+namespace Philcosa.Application.Validators.Extensions
 {
     public static class ValidatorExtensions
     {

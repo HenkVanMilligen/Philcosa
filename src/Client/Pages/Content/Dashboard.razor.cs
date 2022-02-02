@@ -5,10 +5,10 @@ using MudBlazor;
 using System.Collections.Generic;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
-using TestApi2.Client.Infrastructure.Managers.Dashboard;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Client.Infrastructure.Managers.Dashboard;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Client.Pages.Content
+namespace Philcosa.Client.Pages.Content
 {
     public partial class Dashboard
     {

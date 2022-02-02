@@ -3,15 +3,15 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.DocumentTypes.Commands.AddEdit
+namespace Philcosa.Application.Features.DocumentTypes.Commands.AddEdit
 {
     public class AddEditDocumentTypeCommand : IRequest<Result<int>>
     {

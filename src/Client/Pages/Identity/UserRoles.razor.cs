@@ -1,15 +1,15 @@
 ﻿using System;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 
-namespace TestApi2.Client.Pages.Identity
+namespace Philcosa.Client.Pages.Identity
 {
     public partial class UserRoles
     {

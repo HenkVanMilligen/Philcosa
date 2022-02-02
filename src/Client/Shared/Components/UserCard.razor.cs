@@ -1,8 +1,8 @@
-﻿using TestApi2.Client.Extensions;
+﻿using Philcosa.Client.Extensions;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
 
-namespace TestApi2.Client.Shared.Components
+namespace Philcosa.Client.Shared.Components
 {
     public partial class UserCard
     {

@@ -1,8 +1,8 @@
-﻿using TestApi2.Application.Requests.Identity;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Requests.Identity;
 
-namespace TestApi2.Application.Validators.Requests.Identity
+namespace Philcosa.Application.Validators.Requests.Identity
 {
     public class ForgotPasswordRequestValidator : AbstractValidator<ForgotPasswordRequest>
     {

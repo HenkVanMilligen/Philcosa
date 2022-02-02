@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Shared.Wrapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
 
-namespace TestApi2.Client.Infrastructure.Managers.Misc.DocumentType
+namespace Philcosa.Client.Infrastructure.Managers.Misc.DocumentType
 {
     public interface IDocumentTypeManager : IManager
     {

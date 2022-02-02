@@ -1,4 +1,6 @@
-﻿namespace TestApi2.Application.Requests.Catalog
+﻿using Philcosa.Application.Requests;
+
+namespace Philcosa.Application.Requests.Catalog
 {
     public class GetAllPagedProductsRequest : PagedRequest
     {

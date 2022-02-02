@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Application.Models.Chat;
-using TestApi2.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Application.Models.Chat;
 
-namespace TestApi2.Infrastructure.Mappings
+namespace Philcosa.Infrastructure.Mappings
 {
     public class ChatHistoryProfile : Profile
     {

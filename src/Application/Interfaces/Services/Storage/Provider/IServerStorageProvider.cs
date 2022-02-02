@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TestApi2.Application.Interfaces.Services.Storage.Provider
+namespace Philcosa.Application.Interfaces.Services.Storage.Provider
 {
     public interface IStorageProvider
     {

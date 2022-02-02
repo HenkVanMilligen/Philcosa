@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Requests.Mail
+﻿namespace Philcosa.Application.Requests.Mail
 {
     public class MailRequest
     {

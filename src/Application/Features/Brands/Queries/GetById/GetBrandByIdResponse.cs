@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Features.Brands.Queries.GetById
+﻿namespace Philcosa.Application.Features.Brands.Queries.GetById
 {
     public class GetBrandByIdResponse
     {

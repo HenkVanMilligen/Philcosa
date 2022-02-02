@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Shared.Models
+namespace Philcosa.Shared.Models
 {
     public class User
     {

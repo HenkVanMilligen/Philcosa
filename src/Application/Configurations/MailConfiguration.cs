@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Configurations
+﻿namespace Philcosa.Application.Configurations
 {
     public class MailConfiguration
     {

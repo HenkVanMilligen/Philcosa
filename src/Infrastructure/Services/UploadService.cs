@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Extensions;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Requests;
+﻿using Philcosa.Application.Extensions;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Requests;
 using System.IO;
 
-namespace TestApi2.Infrastructure.Services
+namespace Philcosa.Infrastructure.Services
 {
     public class UploadService : IUploadService
     {
@@ -16,9 +16,9 @@ namespace TestApi2.Infrastructure.Services
                 var folder = request.UploadType.ToDescriptionString();
                 var folderName = Path.Combine("Files", folder);
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                bool exists = System.IO.Directory.Exists(pathToSave);
+                bool exists = Directory.Exists(pathToSave);
                 if (!exists)
-                    System.IO.Directory.CreateDirectory(pathToSave);
+                    Directory.CreateDirectory(pathToSave);
                 var fileName = request.FileName.Trim('"');
                 var fullPath = Path.Combine(pathToSave, fileName);
                 var dbPath = Path.Combine(folderName, fileName);

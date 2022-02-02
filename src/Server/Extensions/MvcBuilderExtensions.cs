@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using TestApi2.Application.Configurations;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Configurations;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace TestApi2.Server.Extensions
+namespace Philcosa.Server.Extensions
 {
     internal static class MvcBuilderExtensions
     {

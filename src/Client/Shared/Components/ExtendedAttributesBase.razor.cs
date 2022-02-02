@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.Export;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Managers.ExtendedAttribute;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.Export;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using Philcosa.Client.Extensions;
+using Philcosa.Client.Infrastructure.Managers.ExtendedAttribute;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
+using Philcosa.Domain.Enums;
+using Philcosa.Domain.Contracts;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Shared.Components
+namespace Philcosa.Client.Shared.Components
 {
     public class ExtendedAttributesLocalization
     {
@@ -230,7 +231,7 @@ namespace TestApi2.Client.Shared.Components
                 var response = await ExtendedAttributeManager.DeleteAsync(id);
                 if (response.Succeeded)
                 {
-                     await Reset();
+                    await Reset();
                     _snackBar.Add(response.Messages[0], Severity.Success);
                 }
                 else

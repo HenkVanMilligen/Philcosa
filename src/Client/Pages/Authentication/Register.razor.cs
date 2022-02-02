@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Requests.Identity;
+﻿using Philcosa.Application.Requests.Identity;
 using MudBlazor;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
 
-namespace TestApi2.Client.Pages.Authentication
+namespace Philcosa.Client.Pages.Authentication
 {
     public partial class Register
     {

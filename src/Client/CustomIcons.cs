@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace TestApi2.Client
+namespace Philcosa.Client
 {
     [ExcludeFromCodeCoverage]
     public class CustomIcons

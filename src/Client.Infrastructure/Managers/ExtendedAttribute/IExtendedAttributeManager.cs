@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.Export;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAll;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using TestApi2.Domain.Contracts;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.Export;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAll;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
 
-namespace TestApi2.Client.Infrastructure.Managers.ExtendedAttribute
+namespace Philcosa.Client.Infrastructure.Managers.ExtendedAttribute
 {
     public interface IExtendedAttributeManager<TId, TEntityId, TEntity, TExtendedAttribute>
         where TEntity : AuditableEntity<TEntityId>, IEntityWithExtendedAttributes<TExtendedAttribute>, IEntity<TEntityId>

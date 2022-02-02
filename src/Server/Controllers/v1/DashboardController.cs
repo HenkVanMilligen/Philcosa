@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Philcosa.Server.Controllers;
+using Philcosa.Shared.Constants.Permission;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Dashboards.Queries.GetData;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.Dashboards.Queries.GetData;
 
-namespace TestApi2.Server.Controllers.v1
+namespace Philcosa.Server.Controllers.v1
 {
     [ApiController]
     public class DashboardController : BaseApiController<DashboardController>

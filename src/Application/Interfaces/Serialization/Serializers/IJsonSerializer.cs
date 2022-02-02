@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Interfaces.Serialization.Serializers
+﻿namespace Philcosa.Application.Interfaces.Serialization.Serializers
 {
     public interface IJsonSerializer
     {

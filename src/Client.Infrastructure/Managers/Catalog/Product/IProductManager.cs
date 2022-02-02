@@ -1,10 +1,11 @@
-﻿using TestApi2.Application.Features.Products.Commands.AddEdit;
-using TestApi2.Application.Features.Products.Queries.GetAllPaged;
-using TestApi2.Application.Requests.Catalog;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Features.Products.Commands.AddEdit;
+using Philcosa.Application.Features.Products.Queries.GetAllPaged;
+using Philcosa.Application.Requests.Catalog;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Managers;
 
-namespace TestApi2.Client.Infrastructure.Managers.Catalog.Product
+namespace Philcosa.Client.Infrastructure.Managers.Catalog.Product
 {
     public interface IProductManager : IManager
     {

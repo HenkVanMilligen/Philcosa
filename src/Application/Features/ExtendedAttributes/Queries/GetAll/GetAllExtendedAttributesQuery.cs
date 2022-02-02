@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Contracts;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Wrapper;
 using LazyCache;
 using MediatR;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.ExtendedAttributes.Queries.GetAll
+namespace Philcosa.Application.Features.ExtendedAttributes.Queries.GetAll
 {
     public class GetAllExtendedAttributesQuery<TId, TEntityId, TEntity, TExtendedAttribute>
         : IRequest<Result<List<GetAllExtendedAttributesResponse<TId, TEntityId>>>>

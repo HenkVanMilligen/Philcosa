@@ -1,21 +1,7 @@
-﻿using TestApi2.Application.Configurations;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Account;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Infrastructure;
-using TestApi2.Infrastructure.Contexts;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Infrastructure.Services;
-using TestApi2.Infrastructure.Services.Identity;
-using TestApi2.Infrastructure.Shared.Services;
-using TestApi2.Server.Localization;
-using TestApi2.Server.Managers.Preferences;
-using TestApi2.Server.Permission;
-using TestApi2.Server.Services;
-using TestApi2.Server.Settings;
-using TestApi2.Shared.Constants.Localization;
-using TestApi2.Shared.Constants.Permission;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Configurations;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Account;
+using Philcosa.Application.Interfaces.Services.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -38,15 +24,29 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Serialization.Options;
-using TestApi2.Application.Interfaces.Serialization.Serializers;
-using TestApi2.Application.Interfaces.Serialization.Settings;
-using TestApi2.Application.Serialization.JsonConverters;
-using TestApi2.Application.Serialization.Options;
-using TestApi2.Application.Serialization.Serializers;
-using TestApi2.Application.Serialization.Settings;
+using Philcosa.Application.Interfaces.Serialization.Options;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
+using Philcosa.Application.Interfaces.Serialization.Settings;
+using Philcosa.Application.Serialization.JsonConverters;
+using Philcosa.Application.Serialization.Options;
+using Philcosa.Application.Serialization.Serializers;
+using Philcosa.Application.Serialization.Settings;
+using Philcosa.Infrastructure.Services.Identity;
+using Philcosa.Infrastructure.Services;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Contexts;
+using Philcosa.Infrastructure;
+using Philcosa.Infrastructure.Shared.Services;
+using Philcosa.Shared.Constants.Localization;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Server.Permission;
+using Philcosa.Server.Localization;
+using Philcosa.Server.Settings;
+using Philcosa.Server.Managers.Preferences;
+using Philcosa.Server.Services;
 
-namespace TestApi2.Server.Extensions
+namespace Philcosa.Server.Extensions
 {
     internal static class ServiceCollectionExtensions
     {
@@ -119,7 +119,7 @@ namespace TestApi2.Server.Extensions
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "TestApi2",
+                    Title = "Philcosa",
                     License = new OpenApiLicense
                     {
                         Name = "MIT License",
@@ -127,7 +127,7 @@ namespace TestApi2.Server.Extensions
                     }
                 });
 
-                var localizer = await GetRegisteredServerLocalizerAsync<ServerCommonResources>(services);
+                var localizer = await services.GetRegisteredServerLocalizerAsync<ServerCommonResources>();
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -176,7 +176,7 @@ namespace TestApi2.Server.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
             => services
-                .AddDbContext<BlazorHeroContext>(options => options
+                .AddDbContext<PhilcosaContext>(options => options
                     .UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
             .AddTransient<IDatabaseSeeder, DatabaseSeeder>();
 
@@ -201,7 +201,7 @@ namespace TestApi2.Server.Extensions
                     options.Password.RequireUppercase = false;
                     options.User.RequireUniqueEmail = true;
                 })
-                .AddEntityFrameworkStores<BlazorHeroContext>()
+                .AddEntityFrameworkStores<PhilcosaContext>()
                 .AddDefaultTokenProviders();
 
             return services;
@@ -253,7 +253,7 @@ namespace TestApi2.Server.Extensions
                         ClockSkew = TimeSpan.Zero
                     };
 
-                    var localizer = await GetRegisteredServerLocalizerAsync<ServerCommonResources>(services);
+                    var localizer = await services.GetRegisteredServerLocalizerAsync<ServerCommonResources>();
 
                     bearer.Events = new JwtBearerEvents
                     {

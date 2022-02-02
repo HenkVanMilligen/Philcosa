@@ -1,18 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Requests;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Requests;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Products.Commands.AddEdit
+namespace Philcosa.Application.Features.Products.Commands.AddEdit
 {
     public partial class AddEditProductCommand : IRequest<Result<int>>
     {
@@ -82,8 +82,8 @@ namespace TestApi2.Application.Features.Products.Commands.AddEdit
                     {
                         product.ImageDataURL = _uploadService.UploadAsync(uploadRequest);
                     }
-                    product.Rate = (command.Rate == 0) ? product.Rate : command.Rate;
-                    product.BrandId = (command.BrandId == 0) ? product.BrandId : command.BrandId;
+                    product.Rate = command.Rate == 0 ? product.Rate : command.Rate;
+                    product.BrandId = command.BrandId == 0 ? product.BrandId : command.BrandId;
                     await _unitOfWork.Repository<Product>().UpdateAsync(product);
                     await _unitOfWork.Commit(cancellationToken);
                     return await Result<int>.SuccessAsync(product.Id, _localizer["Product Updated"]);

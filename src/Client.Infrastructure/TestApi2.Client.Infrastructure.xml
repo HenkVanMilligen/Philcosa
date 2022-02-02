@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>TestApi2.Client.Infrastructure</name>
+        <name>Philcosa.Client.Infrastructure</name>
     </assembly>
     <members>
     </members>

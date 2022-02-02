@@ -1,14 +1,15 @@
-﻿using TestApi2.Application.Features.Products.Commands.AddEdit;
-using TestApi2.Application.Features.Products.Commands.Delete;
-using TestApi2.Application.Features.Products.Queries.Export;
-using TestApi2.Application.Features.Products.Queries.GetAllPaged;
-using TestApi2.Application.Features.Products.Queries.GetProductImage;
-using TestApi2.Shared.Constants.Permission;
+﻿using Philcosa.Application.Features.Products.Commands.AddEdit;
+using Philcosa.Application.Features.Products.Commands.Delete;
+using Philcosa.Application.Features.Products.Queries.Export;
+using Philcosa.Application.Features.Products.Queries.GetAllPaged;
+using Philcosa.Application.Features.Products.Queries.GetProductImage;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Server.Controllers;
 
-namespace TestApi2.Server.Controllers.v1.Catalog
+namespace Philcosa.Server.Controllers.v1.Catalog
 {
     public class ProductsController : BaseApiController<ProductsController>
     {

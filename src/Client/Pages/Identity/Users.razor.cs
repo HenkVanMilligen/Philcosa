@@ -1,16 +1,16 @@
-﻿using TestApi2.Application.Responses.Identity;
+﻿using Philcosa.Application.Responses.Identity;
 using MudBlazor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Shared.Constants.Application;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.JSInterop;
 
-namespace TestApi2.Client.Pages.Identity
+namespace Philcosa.Client.Pages.Identity
 {
     public partial class Users
     {

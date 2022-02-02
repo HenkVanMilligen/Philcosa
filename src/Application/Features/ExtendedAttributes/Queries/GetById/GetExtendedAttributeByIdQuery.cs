@@ -2,12 +2,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Contracts;
-using TestApi2.Shared.Wrapper;
 using MediatR;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.ExtendedAttributes.Queries.GetById
+namespace Philcosa.Application.Features.ExtendedAttributes.Queries.GetById
 {
     public class GetExtendedAttributeByIdQuery<TId, TEntityId, TEntity, TExtendedAttribute>
         : IRequest<Result<GetExtendedAttributeByIdResponse<TId, TEntityId>>>

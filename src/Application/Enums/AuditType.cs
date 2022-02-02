@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Enums
+﻿namespace Philcosa.Application.Enums
 {
     public enum AuditType : byte
     {

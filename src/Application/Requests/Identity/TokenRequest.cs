@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TestApi2.Application.Requests.Identity
+namespace Philcosa.Application.Requests.Identity
 {
     public class TokenRequest
     {

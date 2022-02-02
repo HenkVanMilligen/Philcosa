@@ -1,8 +1,4 @@
-﻿using TestApi2.Application.Extensions;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Specifications.Catalog;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Specifications.Catalog;
 using MediatR;
 using System;
 using System.Linq;
@@ -10,8 +6,12 @@ using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Extensions;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Products.Queries.GetAllPaged
+namespace Philcosa.Application.Features.Products.Queries.GetAllPaged
 {
     public class GetAllProductsQuery : IRequest<PaginatedResult<GetAllPagedProductsResponse>>
     {

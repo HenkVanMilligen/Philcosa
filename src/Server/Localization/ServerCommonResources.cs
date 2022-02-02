@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Server.Localization
+﻿namespace Philcosa.Server.Localization
 {
     internal class ServerCommonResources
     {

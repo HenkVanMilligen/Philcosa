@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Interfaces.Serialization.Serializers;
-using TestApi2.Application.Serialization.Settings;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Philcosa.Application.Serialization.Settings;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
 
-namespace TestApi2.Application.Serialization.Serializers
+namespace Philcosa.Application.Serialization.Serializers
 {
     public class NewtonSoftJsonSerializer : IJsonSerializer
     {

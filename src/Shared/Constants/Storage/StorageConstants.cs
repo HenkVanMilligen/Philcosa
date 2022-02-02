@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.Storage
+﻿namespace Philcosa.Shared.Constants.Storage
 {
     public static class StorageConstants
     {

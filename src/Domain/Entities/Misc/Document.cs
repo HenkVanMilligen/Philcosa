@@ -1,7 +1,7 @@
-﻿using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Entities.ExtendedAttributes;
+﻿using Philcosa.Domain.Contracts;
+using Philcosa.Domain.Entities.ExtendedAttributes;
 
-namespace TestApi2.Domain.Entities.Misc
+namespace Philcosa.Domain.Entities.Misc
 {
     public class Document : AuditableEntityWithExtendedAttributes<int, int, Document, DocumentExtendedAttribute>
     {

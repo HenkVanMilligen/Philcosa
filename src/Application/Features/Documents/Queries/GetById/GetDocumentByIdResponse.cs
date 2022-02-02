@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Features.Documents.Queries.GetById
+namespace Philcosa.Application.Features.Documents.Queries.GetById
 {
     public class GetDocumentByIdResponse
     {

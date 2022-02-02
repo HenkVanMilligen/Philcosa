@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace TestApi2.Application.Exceptions
+namespace Philcosa.Application.Exceptions
 {
     public class ApiException : Exception
     {

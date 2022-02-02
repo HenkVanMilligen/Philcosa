@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Infrastructure.Shared.Services
+﻿namespace Philcosa.Infrastructure.Shared.Services
 {
     internal class SendGridMailService
     {

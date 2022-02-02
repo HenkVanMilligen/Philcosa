@@ -1,7 +1,7 @@
-﻿using TestApi2.Infrastructure.Models.Audit;
-using TestApi2.Application.Specifications.Base;
+﻿using Philcosa.Application.Specifications.Base;
+using Philcosa.Infrastructure.Models.Audit;
 
-namespace TestApi2.Infrastructure.Specifications
+namespace Philcosa.Infrastructure.Specifications
 {
     public class AuditFilterSpecification : HeroSpecification<Audit>
     {

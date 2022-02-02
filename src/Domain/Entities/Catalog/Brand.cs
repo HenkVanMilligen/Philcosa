@@ -1,6 +1,6 @@
-﻿using TestApi2.Domain.Contracts;
+﻿using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Domain.Entities.Catalog
+namespace Philcosa.Domain.Entities.Catalog
 {
     public class Brand : AuditableEntity<int>
     {

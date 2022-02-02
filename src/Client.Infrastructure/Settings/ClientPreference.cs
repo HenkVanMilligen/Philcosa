@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using TestApi2.Shared.Constants.Localization;
-using TestApi2.Shared.Settings;
+﻿using Philcosa.Shared.Constants.Localization;
+using Philcosa.Shared.Settings;
+using System.Linq;
 
-namespace TestApi2.Client.Infrastructure.Settings
+namespace Philcosa.Client.Infrastructure.Settings
 {
     public record ClientPreference : IPreference
     {

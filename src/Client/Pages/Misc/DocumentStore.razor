@@ -1,7 +1,7 @@
 ﻿@page "/document-store"
 @attribute [Authorize(Policy = Permissions.Documents.View)]
 @inject Microsoft.Extensions.Localization.IStringLocalizer<DocumentStore> _localizer
-@using TestApi2.Application.Features.Documents.Queries.GetAll
+@using Philcosa.Application.Features.Documents.Queries.GetAll
 
 <style>
     .mud-table-container {

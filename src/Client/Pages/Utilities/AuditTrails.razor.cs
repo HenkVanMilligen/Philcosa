@@ -1,4 +1,4 @@
-﻿using TestApi2.Application.Responses.Audit;
+﻿using Philcosa.Application.Responses.Audit;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Client.Infrastructure.Managers.Audit;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Client.Infrastructure.Managers.Audit;
+using Philcosa.Shared.Constants.Application;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
-namespace TestApi2.Client.Pages.Utilities
+namespace Philcosa.Client.Pages.Utilities
 {
     public partial class AuditTrails
     {
@@ -65,7 +65,7 @@ namespace TestApi2.Client.Pages.Utilities
             {
                 result = false;
             }
-            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0,11, 59, 59, 999))
+            if (_dateRange?.End != null && response.DateTime > _dateRange.End + new TimeSpan(0, 11, 59, 59, 999))
             {
                 result = false;
             }

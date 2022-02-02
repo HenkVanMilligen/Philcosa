@@ -1,8 +1,8 @@
-﻿using TestApi2.Shared.Managers;
-using MudBlazor;
+﻿using MudBlazor;
 using System.Threading.Tasks;
+using Philcosa.Shared.Managers;
 
-namespace TestApi2.Client.Infrastructure.Managers.Preferences
+namespace Philcosa.Client.Infrastructure.Managers.Preferences
 {
     public interface IClientPreferenceManager : IPreferenceManager
     {

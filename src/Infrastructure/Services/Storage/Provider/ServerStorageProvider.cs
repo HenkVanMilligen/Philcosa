@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Storage.Provider;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Storage.Provider;
 
-namespace TestApi2.Infrastructure.Services.Storage.Provider
+namespace Philcosa.Infrastructure.Services.Storage.Provider
 {
     internal class ServerStorageProvider : IStorageProvider
     {
@@ -28,7 +28,7 @@ namespace TestApi2.Infrastructure.Services.Storage.Provider
         public ValueTask<string> GetItemAsync(string key)
         {
             //TODO - replace on implementation (added for tests)--
-            if (_storage.ContainsKey(key)) 
+            if (_storage.ContainsKey(key))
                 return ValueTask.FromResult(_storage[key]);
 
             return ValueTask.FromResult(string.Empty);

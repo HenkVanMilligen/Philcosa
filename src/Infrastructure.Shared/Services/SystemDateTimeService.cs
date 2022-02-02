@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Interfaces.Services;
+﻿using Philcosa.Application.Interfaces.Services;
 using System;
 
-namespace TestApi2.Infrastructure.Shared.Services
+namespace Philcosa.Infrastructure.Shared.Services
 {
     public class SystemDateTimeService : IDateTimeService
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IExcelService
     {

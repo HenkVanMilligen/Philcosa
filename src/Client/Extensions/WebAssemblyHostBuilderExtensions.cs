@@ -1,8 +1,8 @@
 ﻿using Blazored.LocalStorage;
-using TestApi2.Client.Infrastructure.Authentication;
-using TestApi2.Client.Infrastructure.Managers;
-using TestApi2.Client.Infrastructure.Managers.Preferences;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Client.Infrastructure.Authentication;
+using Philcosa.Client.Infrastructure.Managers;
+using Philcosa.Client.Infrastructure.Managers.Preferences;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -14,12 +14,12 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using TestApi2.Client.Infrastructure.Managers.ExtendedAttribute;
-using TestApi2.Domain.Entities.ExtendedAttributes;
-using TestApi2.Domain.Entities.Misc;
+using Philcosa.Client.Infrastructure.Managers.ExtendedAttribute;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.ExtendedAttributes;
 
-namespace TestApi2.Client.Extensions
+namespace Philcosa.Client.Extensions
 {
     public static class WebAssemblyHostBuilderExtensions
     {

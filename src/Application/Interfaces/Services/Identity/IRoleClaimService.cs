@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Application.Interfaces.Common;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Shared.Wrapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Common;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Shared.Wrapper;
 
-namespace TestApi2.Application.Interfaces.Services.Identity
+namespace Philcosa.Application.Interfaces.Services.Identity
 {
     public interface IRoleClaimService : IService
     {

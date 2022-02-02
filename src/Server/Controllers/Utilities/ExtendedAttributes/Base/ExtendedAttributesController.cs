@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.Delete;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.Export;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAll;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetById;
-using TestApi2.Domain.Contracts;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.Delete;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.Export;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAll;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
+using Philcosa.Domain.Contracts;
+using Philcosa.Server.Controllers;
 
-namespace TestApi2.Server.Controllers.Utilities.ExtendedAttributes.Base
+namespace Philcosa.Server.Controllers.Utilities.ExtendedAttributes.Base
 {
     /// <summary>
     /// Abstract Extended Attributes Controller Class

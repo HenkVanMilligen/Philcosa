@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Requests;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Requests;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Documents.Commands.AddEdit
+namespace Philcosa.Application.Features.Documents.Commands.AddEdit
 {
     public partial class AddEditDocumentCommand : IRequest<Result<int>>
     {
@@ -74,7 +74,7 @@ namespace TestApi2.Application.Features.Documents.Commands.AddEdit
                     {
                         doc.URL = _uploadService.UploadAsync(uploadRequest);
                     }
-                    doc.DocumentTypeId = (command.DocumentTypeId == 0) ? doc.DocumentTypeId : command.DocumentTypeId;
+                    doc.DocumentTypeId = command.DocumentTypeId == 0 ? doc.DocumentTypeId : command.DocumentTypeId;
                     await _unitOfWork.Repository<Document>().UpdateAsync(doc);
                     await _unitOfWork.Commit(cancellationToken);
                     return await Result<int>.SuccessAsync(doc.Id, _localizer["Document Updated"]);

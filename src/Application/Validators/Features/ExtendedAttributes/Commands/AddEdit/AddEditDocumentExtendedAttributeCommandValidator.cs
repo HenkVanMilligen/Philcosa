@@ -1,8 +1,8 @@
-﻿using TestApi2.Domain.Entities.ExtendedAttributes;
-using TestApi2.Domain.Entities.Misc;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.ExtendedAttributes;
 
-namespace TestApi2.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit
+namespace Philcosa.Application.Validators.Features.ExtendedAttributes.Commands.AddEdit
 {
     public class AddEditDocumentExtendedAttributeCommandValidator : AddEditExtendedAttributeCommandValidator<int, int, Document, DocumentExtendedAttribute>
     {

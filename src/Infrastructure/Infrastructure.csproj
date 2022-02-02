@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>TestApi2.Infrastructure</RootNamespace>
-    <AssemblyName>TestApi2.Infrastructure</AssemblyName>
+    <RootNamespace>Philcosa.Infrastructure</RootNamespace>
+    <AssemblyName>Philcosa.Infrastructure</AssemblyName>
   </PropertyGroup>
 
   <!--<ItemGroup>

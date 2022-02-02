@@ -1,6 +1,6 @@
-﻿using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Settings;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Client.Extensions;
+using Philcosa.Client.Infrastructure.Settings;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
 using MudBlazor;
@@ -8,10 +8,11 @@ using System;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using TestApi2.Client.Infrastructure.Managers.Identity.Roles;
+using Philcosa.Client.Infrastructure.Managers.Identity.Roles;
 using Microsoft.AspNetCore.Components;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Shared
+namespace Philcosa.Client.Shared
 {
     public partial class MainLayout : IDisposable
     {
@@ -31,7 +32,7 @@ namespace TestApi2.Client.Shared
             if (user == null) return;
             if (user.Identity?.IsAuthenticated == true)
             {
-                CurrentUserId = user.GetUserId();                
+                CurrentUserId = user.GetUserId();
                 FirstName = user.GetFirstName();
                 if (FirstName.Length > 0)
                 {
@@ -150,7 +151,7 @@ namespace TestApi2.Client.Shared
 
             var options = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true };
 
-             _dialogService.Show<Dialogs.Logout>(localizer["Logout"], parameters, options);
+            _dialogService.Show<Dialogs.Logout>(localizer["Logout"], parameters, options);
         }
 
         private void DrawerToggle()

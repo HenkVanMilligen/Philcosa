@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Features.Brands.Queries.GetAll;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Client.Infrastructure.Managers.Catalog.Brand
+namespace Philcosa.Client.Infrastructure.Managers.Catalog.Brand
 {
     public interface IBrandManager : IManager
     {

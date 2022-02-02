@@ -1,4 +1,6 @@
-﻿namespace TestApi2.Application.Requests.Documents
+﻿using Philcosa.Application.Requests;
+
+namespace Philcosa.Application.Requests.Documents
 {
     public class GetAllPagedDocumentsRequest : PagedRequest
     {

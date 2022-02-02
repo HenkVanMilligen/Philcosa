@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.Role
+﻿namespace Philcosa.Shared.Constants.Role
 {
     public static class RoleConstants
     {

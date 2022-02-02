@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TestApi2.Infrastructure.Models.Audit;
-using TestApi2.Application.Responses.Audit;
+using Philcosa.Application.Responses.Audit;
+using Philcosa.Infrastructure.Models.Audit;
 
-namespace TestApi2.Infrastructure.Mappings
+namespace Philcosa.Infrastructure.Mappings
 {
     public class AuditProfile : Profile
     {

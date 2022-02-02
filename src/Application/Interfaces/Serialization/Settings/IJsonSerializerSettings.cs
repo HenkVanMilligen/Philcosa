@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TestApi2.Application.Interfaces.Serialization.Settings
+namespace Philcosa.Application.Interfaces.Serialization.Settings
 {
     public interface IJsonSerializerSettings
     {

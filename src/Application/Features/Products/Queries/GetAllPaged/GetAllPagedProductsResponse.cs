@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Features.Products.Queries.GetAllPaged
+﻿namespace Philcosa.Application.Features.Products.Queries.GetAllPaged
 {
     public class GetAllPagedProductsResponse
     {

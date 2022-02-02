@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Features.Products.Queries.GetProductImage
+﻿namespace Philcosa.Application.Features.Products.Queries.GetProductImage
 {
     public class GetProductImageResponse
     {

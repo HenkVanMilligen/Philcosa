@@ -1,4 +1,4 @@
-﻿using TestApi2.Application.Interfaces.Services;
+﻿using Philcosa.Application.Interfaces.Services;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 
-namespace TestApi2.Infrastructure.Services
+namespace Philcosa.Infrastructure.Services
 {
     public class ExcelService : IExcelService
     {

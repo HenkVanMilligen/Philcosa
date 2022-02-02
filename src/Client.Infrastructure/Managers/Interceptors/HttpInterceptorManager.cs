@@ -1,13 +1,13 @@
-﻿using TestApi2.Client.Infrastructure.Managers.Identity.Authentication;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
 using Toolbelt.Blazor;
+using Philcosa.Client.Infrastructure.Managers.Identity.Authentication;
 
-namespace TestApi2.Client.Infrastructure.Managers.Interceptors
+namespace Philcosa.Client.Infrastructure.Managers.Interceptors
 {
     public class HttpInterceptorManager : IHttpInterceptorManager
     {

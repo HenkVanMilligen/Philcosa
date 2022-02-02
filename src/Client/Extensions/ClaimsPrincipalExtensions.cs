@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace TestApi2.Client.Extensions
+namespace Philcosa.Client.Extensions
 {
     internal static class ClaimsPrincipalExtensions
     {

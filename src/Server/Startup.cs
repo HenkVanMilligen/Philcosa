@@ -1,7 +1,4 @@
-using TestApi2.Application.Extensions;
-using TestApi2.Infrastructure.Extensions;
-using TestApi2.Server.Extensions;
-using TestApi2.Server.Middlewares;
+using Philcosa.Application.Extensions;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,11 +8,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
-using TestApi2.Server.Filters;
-using TestApi2.Server.Managers.Preferences;
+using Philcosa.Server.Filters;
 using Microsoft.Extensions.Localization;
+using Philcosa.Infrastructure.Extensions;
+using Philcosa.Server.Extensions;
+using Philcosa.Server.Middlewares;
+using Philcosa.Server.Managers.Preferences;
 
-namespace TestApi2.Server
+namespace Philcosa.Server
 {
     public class Startup
     {

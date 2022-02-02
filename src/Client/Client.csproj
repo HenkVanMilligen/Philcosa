@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
-    <RootNamespace>TestApi2.Client</RootNamespace>
-    <AssemblyName>TestApi2.Client</AssemblyName>
+    <RootNamespace>Philcosa.Client</RootNamespace>
+    <AssemblyName>Philcosa.Client</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

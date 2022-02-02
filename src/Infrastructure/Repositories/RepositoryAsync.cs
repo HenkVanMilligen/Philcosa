@@ -1,18 +1,18 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Contracts;
-using TestApi2.Infrastructure.Contexts;
+﻿using Philcosa.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Philcosa.Domain.Contracts;
+using Philcosa.Infrastructure.Contexts;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class RepositoryAsync<T, TId> : IRepositoryAsync<T, TId> where T : AuditableEntity<TId>
     {
-        private readonly BlazorHeroContext _dbContext;
+        private readonly PhilcosaContext _dbContext;
 
-        public RepositoryAsync(BlazorHeroContext dbContext)
+        public RepositoryAsync(PhilcosaContext dbContext)
         {
             _dbContext = dbContext;
         }

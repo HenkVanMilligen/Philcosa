@@ -1,7 +1,6 @@
-﻿using TestApi2.Application.Features.Products.Queries.GetAllPaged;
-using TestApi2.Application.Requests.Catalog;
-using TestApi2.Client.Extensions;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Features.Products.Queries.GetAllPaged;
+using Philcosa.Application.Requests.Catalog;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.JSInterop;
@@ -11,12 +10,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Products.Commands.AddEdit;
-using TestApi2.Client.Infrastructure.Managers.Catalog.Product;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.Products.Commands.AddEdit;
+using Philcosa.Client.Infrastructure.Managers.Catalog.Product;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Catalog
+namespace Philcosa.Client.Pages.Catalog
 {
     public partial class Products
     {
@@ -73,7 +73,7 @@ namespace TestApi2.Client.Pages.Catalog
             string[] orderings = null;
             if (!string.IsNullOrEmpty(state.SortLabel))
             {
-                orderings = state.SortDirection != SortDirection.None ? new[] {$"{state.SortLabel} {state.SortDirection}"} : new[] {$"{state.SortLabel}"};
+                orderings = state.SortDirection != SortDirection.None ? new[] { $"{state.SortLabel} {state.SortDirection}" } : new[] { $"{state.SortLabel}" };
             }
 
             var request = new GetAllPagedProductsRequest { PageSize = pageSize, PageNumber = pageNumber + 1, SearchString = _searchString, Orderby = orderings };

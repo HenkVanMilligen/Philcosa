@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace TestApi2.Server.Permission
+namespace Philcosa.Server.Permission
 {
     internal class PermissionRequirement : IAuthorizationRequirement
     {

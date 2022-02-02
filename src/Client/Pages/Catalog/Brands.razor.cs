@@ -1,6 +1,5 @@
-﻿using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Client.Extensions;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Features.Brands.Queries.GetAll;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
@@ -9,13 +8,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Brands.Commands.AddEdit;
-using TestApi2.Client.Infrastructure.Managers.Catalog.Brand;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Client.Infrastructure.Managers.Catalog.Brand;
+using Philcosa.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.JSInterop;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Catalog
+namespace Philcosa.Client.Pages.Catalog
 {
     public partial class Brands
     {

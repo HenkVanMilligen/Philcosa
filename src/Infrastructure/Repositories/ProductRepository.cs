@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
+﻿using Philcosa.Application.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using Philcosa.Domain.Entities.Catalog;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {

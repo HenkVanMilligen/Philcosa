@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace TestApi2.Application.Interfaces.Services.Storage
+namespace Philcosa.Application.Interfaces.Services.Storage
 {
     [ExcludeFromCodeCoverage]
     public class ChangingEventArgs : ChangedEventArgs

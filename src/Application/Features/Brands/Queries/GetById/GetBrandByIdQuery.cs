@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Brands.Queries.GetById
+namespace Philcosa.Application.Features.Brands.Queries.GetById
 {
     public class GetBrandByIdQuery : IRequest<Result<GetBrandByIdResponse>>
     {

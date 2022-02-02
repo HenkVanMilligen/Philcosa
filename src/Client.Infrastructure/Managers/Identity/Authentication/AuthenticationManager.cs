@@ -1,9 +1,7 @@
 ﻿using Blazored.LocalStorage;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Client.Infrastructure.Authentication;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Client.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Components.Authorization;
 using System;
 using System.Net.Http;
@@ -11,11 +9,13 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TestApi2.Client.Infrastructure.Routes;
-using TestApi2.Shared.Constants.Storage;
 using Microsoft.Extensions.Localization;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Storage;
+using Philcosa.Client.Infrastructure.Routes;
+using Philcosa.Client.Infrastructure.Authentication;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.Authentication
+namespace Philcosa.Client.Infrastructure.Managers.Identity.Authentication
 {
     public class AuthenticationManager : IAuthenticationManager
     {
@@ -57,7 +57,7 @@ namespace TestApi2.Client.Infrastructure.Managers.Identity.Authentication
                 {
                     await _localStorage.SetItemAsync(StorageConstants.Local.UserImageURL, userImageURL);
                 }
-                ((BlazorHeroStateProvider)this._authenticationStateProvider).MarkUserAsAuthenticated(model.Email);
+                ((BlazorHeroStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(model.Email);
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 return await Result.SuccessAsync();
             }
@@ -82,7 +82,7 @@ namespace TestApi2.Client.Infrastructure.Managers.Identity.Authentication
             var token = await _localStorage.GetItemAsync<string>(StorageConstants.Local.AuthToken);
             var refreshToken = await _localStorage.GetItemAsync<string>(StorageConstants.Local.RefreshToken);
 
-            var response = await _httpClient.PostAsJsonAsync(Routes.TokenEndpoints.Refresh, new RefreshTokenRequest { Token = token, RefreshToken = refreshToken });
+            var response = await _httpClient.PostAsJsonAsync(TokenEndpoints.Refresh, new RefreshTokenRequest { Token = token, RefreshToken = refreshToken });
 
             var result = await response.ToResult<TokenResponse>();
 

@@ -1,7 +1,7 @@
-﻿using System;
-using TestApi2.Domain.Contracts;
+﻿using Philcosa.Domain.Contracts;
+using System;
 
-namespace TestApi2.Infrastructure.Models.Audit
+namespace Philcosa.Infrastructure.Models.Audit
 {
     public class Audit : IEntity<int>
     {

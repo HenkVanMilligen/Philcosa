@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Settings
+﻿namespace Philcosa.Shared.Settings
 {
     public interface IPreference
     {

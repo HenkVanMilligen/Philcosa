@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Application.Requests.Identity;
+﻿using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Requests.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace TestApi2.Server.Controllers.Identity
+namespace Philcosa.Server.Controllers.Identity
 {
     [Route("api/identity/token")]
     [ApiController]

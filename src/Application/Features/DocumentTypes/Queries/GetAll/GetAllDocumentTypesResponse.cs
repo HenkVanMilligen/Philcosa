@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Features.DocumentTypes.Queries.GetAll
+﻿namespace Philcosa.Application.Features.DocumentTypes.Queries.GetAll
 {
     public class GetAllDocumentTypesResponse
     {

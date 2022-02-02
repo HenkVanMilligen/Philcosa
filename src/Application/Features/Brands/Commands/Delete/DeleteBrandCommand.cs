@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.Brands.Commands.Delete
+namespace Philcosa.Application.Features.Brands.Commands.Delete
 {
     public class DeleteBrandCommand : IRequest<Result<int>>
     {

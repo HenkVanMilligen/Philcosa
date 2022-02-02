@@ -1,13 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Client.Infrastructure.Extensions;
+using Philcosa.Shared.Wrapper;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
 
-namespace TestApi2.Client.Infrastructure.Managers.Misc.DocumentType
+namespace Philcosa.Client.Infrastructure.Managers.Misc.DocumentType
 {
     public class DocumentTypeManager : IDocumentTypeManager
     {

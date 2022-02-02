@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Features.Documents.Queries.GetAll
+namespace Philcosa.Application.Features.Documents.Queries.GetAll
 {
     public class GetAllDocumentsResponse
     {

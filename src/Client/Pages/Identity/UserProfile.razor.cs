@@ -1,10 +1,10 @@
-﻿using TestApi2.Application.Requests.Identity;
+﻿using Philcosa.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TestApi2.Client.Pages.Identity
+namespace Philcosa.Client.Pages.Identity
 {
     public partial class UserProfile
     {

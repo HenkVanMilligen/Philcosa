@@ -1,7 +1,7 @@
-﻿using System.Text.Json;
-using TestApi2.Application.Interfaces.Serialization.Options;
+﻿using Philcosa.Application.Interfaces.Serialization.Options;
+using System.Text.Json;
 
-namespace TestApi2.Application.Serialization.Options
+namespace Philcosa.Application.Serialization.Options
 {
     public class SystemTextJsonOptions : IJsonSerializerOptions
     {

@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
+﻿using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Application.Interfaces.Repositories;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class BrandRepository : IBrandRepository
     {

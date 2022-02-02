@@ -1,9 +1,10 @@
 ﻿#nullable enable
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetById;
+using Philcosa.Domain.Contracts;
+using Philcosa.Domain.Enums;
 using System;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
 
-namespace TestApi2.Application.Features.ExtendedAttributes.Queries.GetById
+namespace Philcosa.Application.Features.ExtendedAttributes.Queries.GetById
 {
     public class GetExtendedAttributeByIdResponse<TId, TEntityId> : IEntityAuditableExtendedAttribute
     {

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Toolbelt.Blazor;
 
-namespace TestApi2.Client.Infrastructure.Managers.Interceptors
+namespace Philcosa.Client.Infrastructure.Managers.Interceptors
 {
     public interface IHttpInterceptorManager : IManager
     {

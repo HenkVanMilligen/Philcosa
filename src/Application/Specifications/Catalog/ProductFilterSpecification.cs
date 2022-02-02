@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Specifications.Base;
-using TestApi2.Domain.Entities.Catalog;
+﻿using Philcosa.Application.Specifications.Base;
+using Philcosa.Domain.Entities.Catalog;
 
-namespace TestApi2.Application.Specifications.Catalog
+namespace Philcosa.Application.Specifications.Catalog
 {
     public class ProductFilterSpecification : HeroSpecification<Product>
     {

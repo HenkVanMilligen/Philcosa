@@ -1,13 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Client.Infrastructure.Extensions;
+using Philcosa.Client.Infrastructure.Routes;
+using Philcosa.Shared.Wrapper;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.RoleClaims
+namespace Philcosa.Client.Infrastructure.Managers.Identity.RoleClaims
 {
     public class RoleClaimManager : IRoleClaimManager
     {
@@ -20,25 +21,25 @@ namespace TestApi2.Client.Infrastructure.Managers.Identity.RoleClaims
 
         public async Task<IResult<string>> DeleteAsync(string id)
         {
-            var response = await _httpClient.DeleteAsync($"{Routes.RoleClaimsEndpoints.Delete}/{id}");
+            var response = await _httpClient.DeleteAsync($"{RoleClaimsEndpoints.Delete}/{id}");
             return await response.ToResult<string>();
         }
 
         public async Task<IResult<List<RoleClaimResponse>>> GetRoleClaimsAsync()
         {
-            var response = await _httpClient.GetAsync(Routes.RoleClaimsEndpoints.GetAll);
+            var response = await _httpClient.GetAsync(RoleClaimsEndpoints.GetAll);
             return await response.ToResult<List<RoleClaimResponse>>();
         }
 
         public async Task<IResult<List<RoleClaimResponse>>> GetRoleClaimsByRoleIdAsync(string roleId)
         {
-            var response = await _httpClient.GetAsync($"{Routes.RoleClaimsEndpoints.GetAll}/{roleId}");
+            var response = await _httpClient.GetAsync($"{RoleClaimsEndpoints.GetAll}/{roleId}");
             return await response.ToResult<List<RoleClaimResponse>>();
         }
 
         public async Task<IResult<string>> SaveAsync(RoleClaimRequest role)
         {
-            var response = await _httpClient.PostAsJsonAsync(Routes.RoleClaimsEndpoints.Save, role);
+            var response = await _httpClient.PostAsJsonAsync(RoleClaimsEndpoints.Save, role);
             return await response.ToResult<string>();
         }
     }

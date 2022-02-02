@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Domain.Contracts
+﻿namespace Philcosa.Domain.Contracts
 {
     public interface IEntityAuditableExtendedAttribute<TId, TEntityId, TEntity>
         : IEntityExtendedAttribute<TId, TEntityId, TEntity>, IAuditableEntity<TId>

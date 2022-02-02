@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Specifications.Base;
-using TestApi2.Domain.Entities.Misc;
+﻿using Philcosa.Application.Specifications.Base;
+using Philcosa.Domain.Entities.Misc;
 
-namespace TestApi2.Application.Specifications.Misc
+namespace Philcosa.Application.Specifications.Misc
 {
     public class DocumentFilterSpecification : HeroSpecification<Document>
     {
@@ -9,11 +9,11 @@ namespace TestApi2.Application.Specifications.Misc
         {
             if (!string.IsNullOrEmpty(searchString))
             {
-                Criteria = p => (p.Title.Contains(searchString) || p.Description.Contains(searchString)) && (p.IsPublic == true || (p.IsPublic == false && p.CreatedBy == userId));
+                Criteria = p => (p.Title.Contains(searchString) || p.Description.Contains(searchString)) && (p.IsPublic == true || p.IsPublic == false && p.CreatedBy == userId);
             }
             else
             {
-                Criteria = p => (p.IsPublic == true || (p.IsPublic == false && p.CreatedBy == userId));
+                Criteria = p => p.IsPublic == true || p.IsPublic == false && p.CreatedBy == userId;
             }
         }
     }

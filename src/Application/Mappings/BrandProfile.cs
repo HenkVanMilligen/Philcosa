@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Features.Brands.Commands.AddEdit;
-using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Application.Features.Brands.Queries.GetById;
-using TestApi2.Domain.Entities.Catalog;
+using Philcosa.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Application.Features.Brands.Queries.GetAll;
+using Philcosa.Application.Features.Brands.Queries.GetById;
+using Philcosa.Domain.Entities.Catalog;
 
-namespace TestApi2.Application.Mappings
+namespace Philcosa.Application.Mappings
 {
     public class BrandProfile : Profile
     {

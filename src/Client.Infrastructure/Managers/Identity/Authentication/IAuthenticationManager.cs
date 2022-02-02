@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Requests.Identity;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Requests.Identity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.Authentication
+namespace Philcosa.Client.Infrastructure.Managers.Identity.Authentication
 {
     public interface IAuthenticationManager : IManager
     {

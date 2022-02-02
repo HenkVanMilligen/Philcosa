@@ -1,11 +1,11 @@
 ﻿using Blazored.LocalStorage;
+using Philcosa.Shared.Constants.Storage;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Shared.Constants.Storage;
 
-namespace TestApi2.Client.Infrastructure.Authentication
+namespace Philcosa.Client.Infrastructure.Authentication
 {
     public class AuthenticationHeaderHandler : DelegatingHandler
     {
@@ -20,7 +20,7 @@ namespace TestApi2.Client.Infrastructure.Authentication
         {
             if (request.Headers.Authorization?.Scheme != "Bearer")
             {
-                var savedToken = await this.localStorage.GetItemAsync<string>(StorageConstants.Local.AuthToken);
+                var savedToken = await localStorage.GetItemAsync<string>(StorageConstants.Local.AuthToken);
 
                 if (!string.IsNullOrWhiteSpace(savedToken))
                 {

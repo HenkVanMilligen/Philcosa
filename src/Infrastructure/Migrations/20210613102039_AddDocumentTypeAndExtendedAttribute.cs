@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TestApi2.Infrastructure.Migrations
+namespace Philcosa.Infrastructure.Migrations
 {
     public partial class AddDocumentTypeAndExtendedAttribute : Migration
     {

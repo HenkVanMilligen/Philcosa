@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Philcosa.Shared.Wrapper;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.RoleClaims
+namespace Philcosa.Client.Infrastructure.Managers.Identity.RoleClaims
 {
     public interface IRoleClaimManager : IManager
     {

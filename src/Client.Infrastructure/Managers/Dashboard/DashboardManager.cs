@@ -1,10 +1,11 @@
-﻿using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Dashboards.Queries.GetData;
+using Philcosa.Application.Features.Dashboards.Queries.GetData;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Extensions;
+using Philcosa.Client.Infrastructure.Routes;
 
-namespace TestApi2.Client.Infrastructure.Managers.Dashboard
+namespace Philcosa.Client.Infrastructure.Managers.Dashboard
 {
     public class DashboardManager : IDashboardManager
     {
@@ -17,7 +18,7 @@ namespace TestApi2.Client.Infrastructure.Managers.Dashboard
 
         public async Task<IResult<DashboardDataResponse>> GetDataAsync()
         {
-            var response = await _httpClient.GetAsync(Routes.DashboardEndpoints.GetData);
+            var response = await _httpClient.GetAsync(DashboardEndpoints.GetData);
             var data = await response.ToResult<DashboardDataResponse>();
             return data;
         }

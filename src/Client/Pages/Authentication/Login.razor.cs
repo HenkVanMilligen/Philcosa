@@ -1,11 +1,11 @@
-﻿using TestApi2.Application.Requests.Identity;
+﻿using Philcosa.Application.Requests.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
 using MudBlazor;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
 
-namespace TestApi2.Client.Pages.Authentication
+namespace Philcosa.Client.Pages.Authentication
 {
     public partial class Login
     {
@@ -45,7 +45,7 @@ namespace TestApi2.Client.Pages.Authentication
 
         void TogglePasswordVisibility()
         {
-            if(_passwordVisibility)
+            if (_passwordVisibility)
             {
                 _passwordVisibility = false;
                 _passwordInputIcon = Icons.Material.Filled.VisibilityOff;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace TestApi2.Application.Interfaces.Services.Storage
+namespace Philcosa.Application.Interfaces.Services.Storage
 {
     public interface IServerStorageService
     {

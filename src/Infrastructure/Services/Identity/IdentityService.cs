@@ -1,9 +1,7 @@
-﻿using TestApi2.Application.Configurations;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Configurations;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,8 +14,10 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Infrastructure.Services.Identity
+namespace Philcosa.Infrastructure.Services.Identity
 {
     public class IdentityService : ITokenService
     {

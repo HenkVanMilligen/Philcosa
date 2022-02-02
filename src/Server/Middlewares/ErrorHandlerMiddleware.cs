@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Exceptions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Server.Middlewares
+namespace Philcosa.Server.Middlewares
 {
     public class ErrorHandlerMiddleware
     {

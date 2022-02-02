@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestApi2.Application.Interfaces.Chat
+namespace Philcosa.Application.Interfaces.Chat
 {
     public interface IChatHistory<TUser> where TUser : IChatUser
     {

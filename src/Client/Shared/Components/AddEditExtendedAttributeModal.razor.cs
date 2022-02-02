@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Client.Extensions;
-using TestApi2.Client.Infrastructure.Managers.ExtendedAttribute;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Client.Infrastructure.Managers.ExtendedAttribute;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
+using Philcosa.Domain.Enums;
+using Philcosa.Domain.Contracts;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Shared.Components
+namespace Philcosa.Client.Shared.Components
 {
     public class AddEditExtendedAttributeModalLocalization
     {

@@ -1,12 +1,12 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
-using MediatR;
+﻿using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Products.Commands.Delete
+namespace Philcosa.Application.Features.Products.Commands.Delete
 {
     public class DeleteProductCommand : IRequest<Result<int>>
     {

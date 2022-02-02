@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>TestApi2.Client.Infrastructure</RootNamespace>
-    <AssemblyName>TestApi2.Client.Infrastructure</AssemblyName>
+    <RootNamespace>Philcosa.Client.Infrastructure</RootNamespace>
+    <AssemblyName>Philcosa.Client.Infrastructure</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />

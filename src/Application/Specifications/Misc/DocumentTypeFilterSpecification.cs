@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Specifications.Base;
-using TestApi2.Domain.Entities.Misc;
+﻿using Philcosa.Application.Specifications.Base;
+using Philcosa.Domain.Entities.Misc;
 
-namespace TestApi2.Application.Specifications.Misc
+namespace Philcosa.Application.Specifications.Misc
 {
     public class DocumentTypeFilterSpecification : HeroSpecification<DocumentType>
     {

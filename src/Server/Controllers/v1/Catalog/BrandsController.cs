@@ -1,14 +1,15 @@
-﻿using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Application.Features.Brands.Queries.GetById;
-using TestApi2.Shared.Constants.Permission;
+﻿using Philcosa.Application.Features.Brands.Queries.GetAll;
+using Philcosa.Application.Features.Brands.Queries.GetById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Brands.Commands.AddEdit;
-using TestApi2.Application.Features.Brands.Commands.Delete;
-using TestApi2.Application.Features.Brands.Queries.Export;
+using Philcosa.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Application.Features.Brands.Commands.Delete;
+using Philcosa.Application.Features.Brands.Queries.Export;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Server.Controllers;
 
-namespace TestApi2.Server.Controllers.v1.Catalog
+namespace Philcosa.Server.Controllers.v1.Catalog
 {
     public class BrandsController : BaseApiController<BrandsController>
     {

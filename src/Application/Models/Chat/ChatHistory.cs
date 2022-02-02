@@ -1,7 +1,7 @@
-﻿using System;
-using TestApi2.Application.Interfaces.Chat;
+﻿using Philcosa.Application.Interfaces.Chat;
+using System;
 
-namespace TestApi2.Application.Models.Chat
+namespace Philcosa.Application.Models.Chat
 {
     public partial class ChatHistory<TUser> : IChatHistory<TUser> where TUser : IChatUser
     {

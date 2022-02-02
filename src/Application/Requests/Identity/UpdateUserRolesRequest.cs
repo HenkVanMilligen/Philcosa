@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Responses.Identity;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Philcosa.Application.Responses.Identity;
 
-namespace TestApi2.Application.Requests.Identity
+namespace Philcosa.Application.Requests.Identity
 {
     public class UpdateUserRolesRequest
     {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace TestApi2.Application.Interfaces.Serialization.Options
+namespace Philcosa.Application.Interfaces.Serialization.Options
 {
     public interface IJsonSerializerOptions
     {

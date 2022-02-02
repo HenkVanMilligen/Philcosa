@@ -1,11 +1,11 @@
-﻿using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Shared.Constants.Permission;
+﻿using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Requests.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Philcosa.Shared.Constants.Permission;
 
-namespace TestApi2.Server.Controllers.Identity
+namespace Philcosa.Server.Controllers.Identity
 {
     [Authorize]
     [Route("api/identity/user")]

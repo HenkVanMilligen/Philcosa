@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Requests.Identity;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Responses.Identity;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Extensions;
 
-namespace TestApi2.Client.Infrastructure.Managers.Identity.Users
+namespace Philcosa.Client.Infrastructure.Managers.Identity.Users
 {
     public class UserManager : IUserManager
     {

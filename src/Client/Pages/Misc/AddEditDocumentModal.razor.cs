@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TestApi2.Application.Features.Documents.Commands.AddEdit;
-using TestApi2.Application.Requests;
+using Philcosa.Application.Features.Documents.Commands.AddEdit;
+using Philcosa.Application.Requests;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
@@ -9,11 +9,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Client.Infrastructure.Managers.Misc.Document;
-using TestApi2.Client.Infrastructure.Managers.Misc.DocumentType;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
+using Philcosa.Client.Infrastructure.Managers.Misc.Document;
+using Philcosa.Client.Infrastructure.Managers.Misc.DocumentType;
 
-namespace TestApi2.Client.Pages.Misc
+namespace Philcosa.Client.Pages.Misc
 {
     public partial class AddEditDocumentModal
     {

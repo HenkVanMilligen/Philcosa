@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestApi2.Shared.Wrapper
+namespace Philcosa.Shared.Wrapper
 {
     public interface IResult
     {

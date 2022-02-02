@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Wrapper;
 using LazyCache;
 using MediatR;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.DocumentTypes.Queries.GetAll
+namespace Philcosa.Application.Features.DocumentTypes.Queries.GetAll
 {
     public class GetAllDocumentTypesQuery : IRequest<Result<List<GetAllDocumentTypesResponse>>>
     {

@@ -1,6 +1,6 @@
-﻿using TestApi2.Application.Enums;
+﻿using Philcosa.Application.Enums;
 
-namespace TestApi2.Application.Requests
+namespace Philcosa.Application.Requests
 {
     public class UploadRequest
     {

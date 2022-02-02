@@ -1,12 +1,12 @@
-﻿using TestApi2.Application.Serialization.Options;
-using TestApi2.Application.Serialization.Serializers;
-using TestApi2.Domain.Contracts;
-using TestApi2.Infrastructure.Extensions;
+﻿using Philcosa.Application.Serialization.Options;
+using Philcosa.Application.Serialization.Serializers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Options;
+using Philcosa.Domain.Contracts;
+using Philcosa.Infrastructure.Extensions;
 
-namespace TestApi2.Infrastructure.Configurations
+namespace Philcosa.Infrastructure.Configurations
 {
     public class EntityExtendedAttributeConfiguration : IEntityTypeConfiguration<IEntityExtendedAttribute>
     {

@@ -1,9 +1,9 @@
 ﻿using System.Text.Json;
-using TestApi2.Application.Interfaces.Serialization.Serializers;
-using TestApi2.Application.Serialization.Options;
 using Microsoft.Extensions.Options;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
+using Philcosa.Application.Serialization.Options;
 
-namespace TestApi2.Application.Serialization.Serializers
+namespace Philcosa.Application.Serialization.Serializers
 {
     public class SystemTextJsonSerializer : IJsonSerializer
     {

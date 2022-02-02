@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Features.Products.Commands.AddEdit;
-using TestApi2.Domain.Entities.Catalog;
+using Philcosa.Application.Features.Products.Commands.AddEdit;
+using Philcosa.Domain.Entities.Catalog;
 
-namespace TestApi2.Application.Mappings
+namespace Philcosa.Application.Mappings
 {
     public class ProductProfile : Profile
     {

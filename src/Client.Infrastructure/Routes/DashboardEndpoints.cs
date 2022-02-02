@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Client.Infrastructure.Routes
+﻿namespace Philcosa.Client.Infrastructure.Routes
 {
     public class DashboardEndpoints
     {

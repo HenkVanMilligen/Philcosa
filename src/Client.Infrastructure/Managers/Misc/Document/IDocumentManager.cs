@@ -1,11 +1,12 @@
-﻿using TestApi2.Application.Features.Documents.Commands.AddEdit;
-using TestApi2.Application.Features.Documents.Queries.GetAll;
-using TestApi2.Application.Requests.Documents;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Features.Documents.Commands.AddEdit;
+using Philcosa.Application.Features.Documents.Queries.GetAll;
+using Philcosa.Application.Requests.Documents;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Documents.Queries.GetById;
+using Philcosa.Application.Features.Documents.Queries.GetById;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Managers;
 
-namespace TestApi2.Client.Infrastructure.Managers.Misc.Document
+namespace Philcosa.Client.Infrastructure.Managers.Misc.Document
 {
     public interface IDocumentManager : IManager
     {

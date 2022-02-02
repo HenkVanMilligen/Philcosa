@@ -1,9 +1,9 @@
-﻿using TestApi2.Domain.Contracts;
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Domain.Contracts;
 
-namespace TestApi2.Application.Interfaces.Repositories
+namespace Philcosa.Application.Interfaces.Repositories
 {
     public interface IUnitOfWork<TId> : IDisposable
     {

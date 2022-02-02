@@ -1,8 +1,9 @@
-﻿using TestApi2.Shared.Wrapper;
-using System.Threading.Tasks;
-using TestApi2.Application.Features.Dashboards.Queries.GetData;
+﻿using System.Threading.Tasks;
+using Philcosa.Application.Features.Dashboards.Queries.GetData;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Managers;
 
-namespace TestApi2.Client.Infrastructure.Managers.Dashboard
+namespace Philcosa.Client.Infrastructure.Managers.Dashboard
 {
     public interface IDashboardManager : IManager
     {

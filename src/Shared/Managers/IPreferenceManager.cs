@@ -1,8 +1,8 @@
-﻿using TestApi2.Shared.Settings;
-using System.Threading.Tasks;
-using TestApi2.Shared.Wrapper;
+﻿using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Settings;
 
-namespace TestApi2.Shared.Managers
+namespace Philcosa.Shared.Managers
 {
     public interface IPreferenceManager
     {

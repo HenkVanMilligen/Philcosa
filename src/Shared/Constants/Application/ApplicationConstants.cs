@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.Application
+﻿namespace Philcosa.Shared.Constants.Application
 {
     public static class ApplicationConstants
     {

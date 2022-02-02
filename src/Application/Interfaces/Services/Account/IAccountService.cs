@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Interfaces.Common;
-using TestApi2.Application.Requests.Identity;
-using TestApi2.Shared.Wrapper;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Philcosa.Application.Requests.Identity;
+using Philcosa.Application.Interfaces.Common;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Interfaces.Services.Account
+namespace Philcosa.Application.Interfaces.Services.Account
 {
     public interface IAccountService : IService
     {

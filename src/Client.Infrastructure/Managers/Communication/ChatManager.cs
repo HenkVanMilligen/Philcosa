@@ -1,14 +1,14 @@
-﻿using TestApi2.Application.Models.Chat;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Models.Chat;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Client.Infrastructure.Extensions;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Client.Infrastructure.Managers.Communication
+namespace Philcosa.Client.Infrastructure.Managers.Communication
 {
     public class ChatManager : IChatManager
     {

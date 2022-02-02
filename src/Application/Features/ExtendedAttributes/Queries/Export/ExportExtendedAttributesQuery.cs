@@ -4,18 +4,18 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Application.Extensions;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Specifications.ExtendedAttribute;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Specifications.ExtendedAttribute;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Extensions;
+using Philcosa.Domain.Enums;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.ExtendedAttributes.Queries.Export
+namespace Philcosa.Application.Features.ExtendedAttributes.Queries.Export
 {
     internal class ExportExtendedAttributesQueryLocalization
     {

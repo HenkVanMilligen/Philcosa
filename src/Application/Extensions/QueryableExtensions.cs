@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Exceptions;
-using TestApi2.Application.Specifications.Base;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Domain.Contracts;
+using Philcosa.Application.Specifications.Base;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Extensions
+namespace Philcosa.Application.Extensions
 {
     public static class QueryableExtensions
     {

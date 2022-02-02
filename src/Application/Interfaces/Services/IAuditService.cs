@@ -1,9 +1,9 @@
-﻿using TestApi2.Application.Responses.Audit;
-using TestApi2.Shared.Wrapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Philcosa.Application.Responses.Audit;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Interfaces.Services
+namespace Philcosa.Application.Interfaces.Services
 {
     public interface IAuditService
     {

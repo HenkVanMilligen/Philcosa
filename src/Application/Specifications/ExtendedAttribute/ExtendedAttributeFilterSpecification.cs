@@ -1,9 +1,9 @@
-﻿using System;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.Export;
-using TestApi2.Application.Specifications.Base;
-using TestApi2.Domain.Contracts;
+﻿using Philcosa.Application.Features.ExtendedAttributes.Queries.Export;
+using Philcosa.Application.Specifications.Base;
+using Philcosa.Domain.Contracts;
+using System;
 
-namespace TestApi2.Application.Specifications.ExtendedAttribute
+namespace Philcosa.Application.Specifications.ExtendedAttribute
 {
     public class ExtendedAttributeFilterSpecification<TId, TEntityId, TEntity, TExtendedAttribute>
         : HeroSpecification<TExtendedAttribute>

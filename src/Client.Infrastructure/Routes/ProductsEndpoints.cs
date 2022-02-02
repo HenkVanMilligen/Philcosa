@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace TestApi2.Client.Infrastructure.Routes
+namespace Philcosa.Client.Infrastructure.Routes
 {
     public static class ProductsEndpoints
     {

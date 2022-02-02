@@ -1,25 +1,25 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Domain.Contracts;
-using TestApi2.Infrastructure.Contexts;
+﻿using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Interfaces.Services;
 using LazyCache;
 using System;
 using System.Collections;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Domain.Contracts;
+using Philcosa.Infrastructure.Contexts;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class UnitOfWork<TId> : IUnitOfWork<TId>
     {
         private readonly ICurrentUserService _currentUserService;
-        private readonly BlazorHeroContext _dbContext;
+        private readonly PhilcosaContext _dbContext;
         private bool disposed;
         private Hashtable _repositories;
         private readonly IAppCache _cache;
 
-        public UnitOfWork(BlazorHeroContext dbContext, ICurrentUserService currentUserService, IAppCache cache)
+        public UnitOfWork(PhilcosaContext dbContext, ICurrentUserService currentUserService, IAppCache cache)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _currentUserService = currentUserService;
@@ -52,7 +52,7 @@ namespace TestApi2.Infrastructure.Repositories
 
         public async Task<int> CommitAndRemoveCache(CancellationToken cancellationToken, params string[] cacheKeys)
         {
-            var result =  await _dbContext.SaveChangesAsync(cancellationToken);
+            var result = await _dbContext.SaveChangesAsync(cancellationToken);
             foreach (var cacheKey in cacheKeys)
             {
                 _cache.Remove(cacheKey);

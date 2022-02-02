@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TestApi2.Application.Enums
+namespace Philcosa.Application.Enums
 {
     public enum UploadType : byte
     {

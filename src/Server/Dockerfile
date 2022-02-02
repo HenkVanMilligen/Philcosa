@@ -29,4 +29,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 WORKDIR /app/Files
 WORKDIR /app
-ENTRYPOINT ["dotnet", "TestApi2.Server.dll"]
+ENTRYPOINT ["dotnet", "Philcosa.Server.dll"]

@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Misc;
+﻿using Philcosa.Domain.Entities.Misc;
+using Philcosa.Application.Interfaces.Repositories;
 
-namespace TestApi2.Infrastructure.Repositories
+namespace Philcosa.Infrastructure.Repositories
 {
     public class DocumentTypeRepository : IDocumentTypeRepository
     {

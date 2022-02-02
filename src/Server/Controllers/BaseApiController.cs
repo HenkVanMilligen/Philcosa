@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace TestApi2.Server.Controllers
+namespace Philcosa.Server.Controllers
 {
     /// <summary>
     /// Abstract BaseApi Controller Class

@@ -1,18 +1,18 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Domain.Entities.Catalog;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Application.Extensions;
-using TestApi2.Application.Specifications.Catalog;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Specifications.Catalog;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Application.Extensions;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Products.Queries.Export
+namespace Philcosa.Application.Features.Products.Queries.Export
 {
     public class ExportProductsQuery : IRequest<Result<string>>
     {
@@ -44,7 +44,7 @@ namespace TestApi2.Application.Features.Products.Queries.Export
             var productFilterSpec = new ProductFilterSpecification(request.SearchString);
             var products = await _unitOfWork.Repository<Product>().Entities
                 .Specify(productFilterSpec)
-                .ToListAsync( cancellationToken);
+                .ToListAsync(cancellationToken);
             var data = await _excelService.ExportAsync(products, mappers: new Dictionary<string, Func<Product, object>>
             {
                 { _localizer["Id"], item => item.Id },

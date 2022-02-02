@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Application.Interfaces.Common
+﻿namespace Philcosa.Application.Interfaces.Common
 {
     public interface IScopedService
     {

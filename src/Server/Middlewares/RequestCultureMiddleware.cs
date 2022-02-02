@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace TestApi2.Server.Middlewares
+namespace Philcosa.Server.Middlewares
 {
     public class RequestCultureMiddleware
     {

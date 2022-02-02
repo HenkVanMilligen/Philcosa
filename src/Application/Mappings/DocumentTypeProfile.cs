@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Features.DocumentTypes.Commands.AddEdit;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetAll;
-using TestApi2.Application.Features.DocumentTypes.Queries.GetById;
-using TestApi2.Domain.Entities.Misc;
+using Philcosa.Application.Features.DocumentTypes.Commands.AddEdit;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetAll;
+using Philcosa.Application.Features.DocumentTypes.Queries.GetById;
+using Philcosa.Domain.Entities.Misc;
 
-namespace TestApi2.Application.Mappings
+namespace Philcosa.Application.Mappings
 {
     public class DocumentTypeProfile : Profile
     {

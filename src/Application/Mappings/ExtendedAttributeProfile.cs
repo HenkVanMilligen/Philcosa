@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAll;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
-using TestApi2.Application.Features.ExtendedAttributes.Queries.GetById;
-using TestApi2.Domain.Entities.ExtendedAttributes;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAll;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetAllByEntityId;
+using Philcosa.Application.Features.ExtendedAttributes.Queries.GetById;
+using Philcosa.Domain.Entities.ExtendedAttributes;
 
-namespace TestApi2.Application.Mappings
+namespace Philcosa.Application.Mappings
 {
     public class ExtendedAttributeProfile : Profile
     {

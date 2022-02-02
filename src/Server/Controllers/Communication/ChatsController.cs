@@ -1,13 +1,13 @@
-﻿using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Models.Chat;
+﻿using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Models.Chat;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Shared.Constants.Permission;
 
-namespace TestApi2.Server.Controllers.Communication
+namespace Philcosa.Server.Controllers.Communication
 {
     [Authorize(Policy = Permissions.Communication.Chat)]
     [Route("api/[controller]")]

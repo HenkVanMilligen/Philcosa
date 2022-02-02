@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.User
+﻿namespace Philcosa.Shared.Constants.User
 {
     public static class UserConstants
     {

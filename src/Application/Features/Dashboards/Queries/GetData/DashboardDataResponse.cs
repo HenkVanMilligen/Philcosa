@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TestApi2.Application.Features.Dashboards.Queries.GetData
+namespace Philcosa.Application.Features.Dashboards.Queries.GetData
 {
     public class DashboardDataResponse
     {

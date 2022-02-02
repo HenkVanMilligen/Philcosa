@@ -1,7 +1,7 @@
-﻿using TestApi2.Application.Models.Chat;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Client.Extensions;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Models.Chat;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Client.Extensions;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -11,11 +11,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Client.Infrastructure.Managers.Communication;
-using TestApi2.Shared.Constants.Storage;
+using Philcosa.Application.Interfaces.Chat;
+using Philcosa.Client.Infrastructure.Managers.Communication;
+using Philcosa.Shared.Constants.Storage;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Communication
+namespace Philcosa.Client.Pages.Communication
 {
     public partial class Chat
     {
@@ -84,7 +85,7 @@ namespace TestApi2.Client.Pages.Communication
             HubConnection.On<string>(ApplicationConstants.SignalR.ConnectUser, (userId) =>
             {
                 var connectedUser = UserList.Find(x => x.Id.Equals(userId));
-                if (connectedUser is {IsOnline: false})
+                if (connectedUser is { IsOnline: false })
                 {
                     connectedUser.IsOnline = true;
                     _snackBar.Add($"{connectedUser.UserName} {_localizer["Logged In."]}", Severity.Info);
@@ -94,7 +95,7 @@ namespace TestApi2.Client.Pages.Communication
             HubConnection.On<string>(ApplicationConstants.SignalR.DisconnectUser, (userId) =>
             {
                 var disconnectedUser = UserList.Find(x => x.Id.Equals(userId));
-                if (disconnectedUser is {IsOnline: true})
+                if (disconnectedUser is { IsOnline: true })
                 {
                     disconnectedUser.IsOnline = false;
                     _snackBar.Add($"{disconnectedUser.UserName} {_localizer["Logged Out."]}", Severity.Info);
@@ -103,14 +104,14 @@ namespace TestApi2.Client.Pages.Communication
             });
             HubConnection.On<ChatHistory<IChatUser>, string>(ApplicationConstants.SignalR.ReceiveMessage, async (chatHistory, userName) =>
              {
-                 if ((CId == chatHistory.ToUserId && CurrentUserId == chatHistory.FromUserId) || (CId == chatHistory.FromUserId && CurrentUserId == chatHistory.ToUserId))
+                 if (CId == chatHistory.ToUserId && CurrentUserId == chatHistory.FromUserId || CId == chatHistory.FromUserId && CurrentUserId == chatHistory.ToUserId)
                  {
-                     if ((CId == chatHistory.ToUserId && CurrentUserId == chatHistory.FromUserId))
+                     if (CId == chatHistory.ToUserId && CurrentUserId == chatHistory.FromUserId)
                      {
                          _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageURL = CurrentUserImageURL });
                          await HubConnection.SendAsync(ApplicationConstants.SignalR.SendChatNotification, string.Format(_localizer["New Message From {0}"], userName), CId, CurrentUserId);
                      }
-                     else if ((CId == chatHistory.FromUserId && CurrentUserId == chatHistory.ToUserId))
+                     else if (CId == chatHistory.FromUserId && CurrentUserId == chatHistory.ToUserId)
                      {
                          _messages.Add(new ChatHistoryResponse { Message = chatHistory.Message, FromUserFullName = userName, CreatedDate = chatHistory.CreatedDate, FromUserImageURL = CImageURL });
                      }

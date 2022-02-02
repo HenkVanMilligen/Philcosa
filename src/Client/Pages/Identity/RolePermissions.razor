@@ -1,5 +1,5 @@
 ﻿@page "/identity/role-permissions/{Id}"
-@using TestApi2.Application.Responses.Identity
+@using Philcosa.Application.Responses.Identity
 @inject Microsoft.Extensions.Localization.IStringLocalizer<RolePermissions> _localizer
 @attribute [Authorize(Policy = Permissions.RoleClaims.View)]
 

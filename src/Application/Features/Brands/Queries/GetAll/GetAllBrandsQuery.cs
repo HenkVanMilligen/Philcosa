@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Wrapper;
 using LazyCache;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.Brands.Queries.GetAll
+namespace Philcosa.Application.Features.Brands.Queries.GetAll
 {
     public class GetAllBrandsQuery : IRequest<Result<List<GetAllBrandsResponse>>>
     {

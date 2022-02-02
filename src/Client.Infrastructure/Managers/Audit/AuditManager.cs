@@ -1,11 +1,11 @@
-﻿using TestApi2.Application.Responses.Audit;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Responses.Audit;
+using Philcosa.Client.Infrastructure.Extensions;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Client.Infrastructure.Managers.Audit
+namespace Philcosa.Client.Infrastructure.Managers.Audit
 {
     public class AuditManager : IAuditManager
     {

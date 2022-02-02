@@ -1,31 +1,31 @@
 ﻿using AutoMapper;
-using TestApi2.Application.Exceptions;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Application.Models.Chat;
-using TestApi2.Application.Responses.Identity;
-using TestApi2.Infrastructure.Contexts;
-using TestApi2.Shared.Wrapper;
+using Philcosa.Application.Exceptions;
+using Philcosa.Application.Interfaces.Services;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Models.Chat;
+using Philcosa.Application.Responses.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestApi2.Application.Interfaces.Chat;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Shared.Constants.Role;
+using Philcosa.Application.Interfaces.Chat;
 using Microsoft.Extensions.Localization;
+using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Infrastructure.Contexts;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Role;
 
-namespace TestApi2.Infrastructure.Services
+namespace Philcosa.Infrastructure.Services
 {
     public class ChatService : IChatService
     {
-        private readonly BlazorHeroContext _context;
+        private readonly PhilcosaContext _context;
         private readonly IMapper _mapper;
         private readonly IUserService _userService;
         private readonly IStringLocalizer<ChatService> _localizer;
 
         public ChatService(
-            BlazorHeroContext context,
+            PhilcosaContext context,
             IMapper mapper,
             IUserService userService,
             IStringLocalizer<ChatService> localizer)
@@ -43,7 +43,7 @@ namespace TestApi2.Infrastructure.Services
             {
                 var user = response.Data;
                 var query = await _context.ChatHistories
-                    .Where(h => (h.FromUserId == userId && h.ToUserId == contactId) || (h.FromUserId == contactId && h.ToUserId == userId))
+                    .Where(h => h.FromUserId == userId && h.ToUserId == contactId || h.FromUserId == contactId && h.ToUserId == userId)
                     .OrderBy(a => a.CreatedDate)
                     .Include(a => a.FromUser)
                     .Include(a => a.ToUser)

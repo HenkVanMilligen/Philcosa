@@ -1,8 +1,7 @@
-﻿
-using TestApi2.Application.Interfaces.Serialization.Settings;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Philcosa.Application.Interfaces.Serialization.Settings;
 
-namespace TestApi2.Application.Serialization.Settings
+namespace Philcosa.Application.Serialization.Settings
 {
     public class NewtonsoftJsonSettings : IJsonSerializerSettings
     {

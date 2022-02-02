@@ -1,14 +1,14 @@
-﻿using TestApi2.Application.Requests.Identity;
-using TestApi2.Client.Extensions;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Requests.Identity;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using MudBlazor;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Client.Infrastructure.Managers.Identity.Roles;
+using Philcosa.Client.Infrastructure.Managers.Identity.Roles;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Identity
+namespace Philcosa.Client.Pages.Identity
 {
     public partial class RoleModal
     {

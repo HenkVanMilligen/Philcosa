@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Philcosa.Domain.Contracts;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Domain.Contracts;
 
-namespace TestApi2.Application.Interfaces.Repositories
+namespace Philcosa.Application.Interfaces.Repositories
 {
     public interface IExtendedAttributeUnitOfWork<TId, TEntityId, TEntity> : IDisposable where TEntity : AuditableEntity<TEntityId>
     {

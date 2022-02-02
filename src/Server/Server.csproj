@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>TestApi2.Server</RootNamespace>
-    <AssemblyName>TestApi2.Server</AssemblyName>
+    <RootNamespace>Philcosa.Server</RootNamespace>
+    <AssemblyName>Philcosa.Server</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <DocumentationFile>TestApi2.Server.xml</DocumentationFile>
+    <DocumentationFile>Philcosa.Server.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
     <UserSecretsId>aa8b7360-671b-4ab2-99b0-7df28629ef3d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>

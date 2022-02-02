@@ -1,4 +1,4 @@
-﻿namespace TestApi2.Shared.Constants.Permission
+﻿namespace Philcosa.Shared.Constants.Permission
 {
     public static class ApplicationClaimTypes
     {

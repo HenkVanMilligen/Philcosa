@@ -1,8 +1,7 @@
-﻿using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Application.Features.Products.Commands.AddEdit;
-using TestApi2.Application.Requests;
-using TestApi2.Client.Extensions;
-using TestApi2.Shared.Constants.Application;
+﻿using Philcosa.Application.Features.Brands.Queries.GetAll;
+using Philcosa.Application.Features.Products.Commands.AddEdit;
+using Philcosa.Application.Requests;
+using Philcosa.Shared.Constants.Application;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -13,10 +12,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.FluentValidation;
-using TestApi2.Client.Infrastructure.Managers.Catalog.Brand;
-using TestApi2.Client.Infrastructure.Managers.Catalog.Product;
+using Philcosa.Client.Infrastructure.Managers.Catalog.Brand;
+using Philcosa.Client.Infrastructure.Managers.Catalog.Product;
+using Philcosa.Client.Extensions;
 
-namespace TestApi2.Client.Pages.Catalog
+namespace Philcosa.Client.Pages.Catalog
 {
     public partial class AddEditProductModal
     {

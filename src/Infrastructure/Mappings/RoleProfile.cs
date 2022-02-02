@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using TestApi2.Infrastructure.Models.Identity;
-using TestApi2.Application.Responses.Identity;
+using Philcosa.Application.Responses.Identity;
+using Philcosa.Infrastructure.Models.Identity;
 
-namespace TestApi2.Infrastructure.Mappings
+namespace Philcosa.Infrastructure.Mappings
 {
     public class RoleProfile : Profile
     {

@@ -1,6 +1,6 @@
 ﻿using Hangfire.Dashboard;
 
-namespace TestApi2.Server.Filters
+namespace Philcosa.Server.Filters
 {
     public class HangfireAuthorizationFilter : IDashboardAuthorizationFilter
     {

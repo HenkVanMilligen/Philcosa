@@ -1,18 +1,18 @@
-﻿using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Application.Interfaces.Services.Identity;
-using TestApi2.Domain.Entities.Catalog;
-using TestApi2.Shared.Wrapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TestApi2.Domain.Entities.ExtendedAttributes;
-using TestApi2.Domain.Entities.Misc;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Services.Identity;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.Catalog;
+using Philcosa.Domain.Entities.ExtendedAttributes;
+using Philcosa.Shared.Wrapper;
 
-namespace TestApi2.Application.Features.Dashboards.Queries.GetData
+namespace Philcosa.Application.Features.Dashboards.Queries.GetData
 {
     public class GetDashboardDataQuery : IRequest<Result<DashboardDataResponse>>
     {

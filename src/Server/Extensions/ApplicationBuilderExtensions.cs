@@ -1,17 +1,18 @@
 ﻿using System.Globalization;
 using System.Linq;
-using TestApi2.Application.Interfaces.Services;
-using TestApi2.Server.Hubs;
-using TestApi2.Server.Middlewares;
-using TestApi2.Shared.Constants.Localization;
+using Philcosa.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TestApi2.Shared.Constants.Application;
+using Philcosa.Shared.Constants.Localization;
+using Philcosa.Shared.Constants.Application;
+using Philcosa.Server.Hubs;
+using Philcosa.Server.Extensions;
+using Philcosa.Server.Middlewares;
 
-namespace TestApi2.Server.Extensions
+namespace Philcosa.Server.Extensions
 {
     internal static class ApplicationBuilderExtensions
     {

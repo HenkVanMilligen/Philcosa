@@ -5,16 +5,16 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using TestApi2.Application.Interfaces.Repositories;
-using TestApi2.Domain.Contracts;
-using TestApi2.Domain.Enums;
-using TestApi2.Shared.Constants.Application;
-using TestApi2.Shared.Wrapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using Philcosa.Application.Interfaces.Repositories;
+using Philcosa.Domain.Enums;
+using Philcosa.Domain.Contracts;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Shared.Constants.Application;
 
-namespace TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit
+namespace Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit
 {
     internal class AddEditExtendedAttributeCommandLocalization
     {

@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using TestApi2.Server.Managers.Preferences;
-using TestApi2.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Server.Managers.Preferences;
 
-namespace TestApi2.Server.Controllers.Utilities
+namespace Philcosa.Server.Controllers.Utilities
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,13 +1,14 @@
-﻿using TestApi2.Application.Features.Brands.Queries.GetAll;
-using TestApi2.Client.Infrastructure.Extensions;
-using TestApi2.Shared.Wrapper;
+﻿using Philcosa.Application.Features.Brands.Queries.GetAll;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using TestApi2.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Application.Features.Brands.Commands.AddEdit;
+using Philcosa.Shared.Wrapper;
+using Philcosa.Client.Infrastructure.Extensions;
+using Philcosa.Client.Infrastructure.Routes;
 
-namespace TestApi2.Client.Infrastructure.Managers.Catalog.Brand
+namespace Philcosa.Client.Infrastructure.Managers.Catalog.Brand
 {
     public class BrandManager : IBrandManager
     {
@@ -21,26 +22,26 @@ namespace TestApi2.Client.Infrastructure.Managers.Catalog.Brand
         public async Task<IResult<string>> ExportToExcelAsync(string searchString = "")
         {
             var response = await _httpClient.GetAsync(string.IsNullOrWhiteSpace(searchString)
-                ? Routes.BrandsEndpoints.Export
-                : Routes.BrandsEndpoints.ExportFiltered(searchString));
+                ? BrandsEndpoints.Export
+                : BrandsEndpoints.ExportFiltered(searchString));
             return await response.ToResult<string>();
         }
 
         public async Task<IResult<int>> DeleteAsync(int id)
         {
-            var response = await _httpClient.DeleteAsync($"{Routes.BrandsEndpoints.Delete}/{id}");
+            var response = await _httpClient.DeleteAsync($"{BrandsEndpoints.Delete}/{id}");
             return await response.ToResult<int>();
         }
 
         public async Task<IResult<List<GetAllBrandsResponse>>> GetAllAsync()
         {
-            var response = await _httpClient.GetAsync(Routes.BrandsEndpoints.GetAll);
+            var response = await _httpClient.GetAsync(BrandsEndpoints.GetAll);
             return await response.ToResult<List<GetAllBrandsResponse>>();
         }
 
         public async Task<IResult<int>> SaveAsync(AddEditBrandCommand request)
         {
-            var response = await _httpClient.PostAsJsonAsync(Routes.BrandsEndpoints.Save, request);
+            var response = await _httpClient.PostAsJsonAsync(BrandsEndpoints.Save, request);
             return await response.ToResult<int>();
         }
     }

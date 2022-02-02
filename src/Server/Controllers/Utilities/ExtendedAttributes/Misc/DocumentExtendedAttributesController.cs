@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
-using TestApi2.Application.Features.ExtendedAttributes.Commands.AddEdit;
-using TestApi2.Domain.Entities.ExtendedAttributes;
-using TestApi2.Domain.Entities.Misc;
-using TestApi2.Server.Controllers.Utilities.ExtendedAttributes.Base;
-using TestApi2.Shared.Constants.Permission;
+using Philcosa.Application.Features.ExtendedAttributes.Commands.AddEdit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Philcosa.Domain.Entities.Misc;
+using Philcosa.Domain.Entities.ExtendedAttributes;
+using Philcosa.Shared.Constants.Permission;
+using Philcosa.Server.Controllers.Utilities.ExtendedAttributes.Base;
 
-namespace TestApi2.Server.Controllers.Utilities.ExtendedAttributes.Misc
+namespace Philcosa.Server.Controllers.Utilities.ExtendedAttributes.Misc
 {
     public class DocumentExtendedAttributesController : ExtendedAttributesController<int, int, Document, DocumentExtendedAttribute>
     {

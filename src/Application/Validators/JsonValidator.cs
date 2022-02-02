@@ -1,8 +1,8 @@
-﻿using TestApi2.Application.Interfaces.Serialization.Serializers;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Validators;
+using Philcosa.Application.Interfaces.Serialization.Serializers;
 
-namespace TestApi2.Application.Validators
+namespace Philcosa.Application.Validators
 {
     public class JsonValidator<T> : PropertyValidator<T, string>
     {
