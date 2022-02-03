@@ -1,0 +1,41 @@
+﻿@page "/catalog/countries"
+@using Philcosa.Application.Features.Countries.Queries.GetAll
+ 
+<HeroTitle Title="Countries" Description="Manage Countries." />
+<MudTable Hover="true" Elevation="25" Items="CountryList" Dense="@_dense" Bordered="@_bordered" Striped="@_striped" Filter="new Func<GetAllCountriesResponse, bool>(Search)" @bind-brand="country">
+    <ToolBarContent>
+        <div class="justify-center mud-text-align-center">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="(()=>InvokeModal())">Create</MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="GetCountriesAsync" Color="Color.Secondary">Reload</MudButton>
+        </div>
+        <MudToolBarSpacer />
+        <MudTextField @bind-Value="searchString" Immediate="true" Placeholder="Search for Countries" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0 mb-3"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<GetAllCountriesResponse, object>(x => x.Id)">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<GetAllCountriesResponse, object>(x => x.Code)">Code</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<GetAllCountriesResponse, object>(x => x.Name)">Name</MudTableSortLabel></MudTh>
+        <MudTh Style="text-align:right">Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Code">@context.Code</MudTd>
+        <MudTd DataLabel="Name">
+            <MudHighlighter Text="@context.Name" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="Actions" Style="text-align:right">
+            <MudMenu Label="Actions" ]" Variant="Variant.Filled" DisableElevation="true" EndIcon="@Icons.Filled.KeyboardArrowDown" IconColor="Color.Secondary">
+                <MudMenuItem @onclick="@(()=>InvokeModal(@context.Id))">Edit</MudMenuItem>
+                <MudMenuItem @onclick="@(()=>Delete(@context.Id))">Delete</MudMenuItem>
+            </MudMenu>
+        </MudTd>
+    </RowTemplate>
+    @*<FooterContent>
+        <MudSwitch @bind-Checked="@_dense" Color="Color.Secondary" Style="margin-left: 5px;">@localizer["Dense"]</MudSwitch>
+        <MudSwitch @bind-Checked="@_striped" Color="Color.Tertiary" Style="margin-left: 5px;">@localizer["Striped"]</MudSwitch>
+        <MudSwitch @bind-Checked="@_bordered" Color="Color.Warning" Style="margin-left: 5px;">@localizer["Bordered"]</MudSwitch>
+    </FooterContent>*@
+    <PagerContent>
+        <TablePager />
+    </PagerContent>
+</MudTable>

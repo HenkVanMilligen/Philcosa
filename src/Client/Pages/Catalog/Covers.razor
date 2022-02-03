@@ -1,0 +1,197 @@
+﻿@page "/catalog/covers"
+@using Philcosa.Application.Features.Covers.Queries.GetAllPaged;
+@inject Microsoft.Extensions.Localization.IStringLocalizer<Covers> localizer
+
+
+<HeroTitle Title="@localizer["Covers"]" Description="@localizer["Manage Covers."]" />
+
+<MudTable Elevation="25" ServerData="@(new Func<TableState, Task<TableData<GetAllPagedCoversResponse>>>(ServerReload))" CommitEditCommand="@editCoverCommand" Hover="true" Dense="true" Bordered="true" Striped="true" @ref="table">
+    <ToolBarContent>
+
+        @*@if (_authorizationService.AuthorizeAsync(AuthenticationStateProviderUser, Permissions.Covers.Create).Result.Succeeded)
+            {*@
+        <div class="justify-center mud-text-align-center">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="@(()=>InvokeModal(0))">@localizer["Create"]</MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="@(()=>OnSearch(""))" Color="Color.Secondary">@localizer["Reload"]</MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="@(ExportToExcel)" Color="Color.Surface">@localizer["Export"]</MudButton>
+        </div>
+        @*}*@
+        <MudToolBarSpacer />
+        <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="@localizer["Search"]" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverCountryField">Country</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverDateField">Date</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverTypeField">Type</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverIssuerField">Issuer</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverNumberField">#</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverValueField">Value</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverDescriptionField">Description</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverNumberIssuedField"># Issued</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverAtlatField">Atlas</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverAlbertaField">Alberta</MudTableSortLabel></MudTh>
+        <MudTh Style="text-align:right">@localizer["Actions"]</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd><MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowBtnPress(context.Id))">@((context.ShowDetails == true)? "-" : "+")</MudButton></MudTd>
+        <MudTd DataLabel="Country">
+            <MudHighlighter Text="@context.Country" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverDate">
+            <MudHighlighter Text="@context.CoverDate.ToString("yyyy/MM/dd")" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverType">@context.CoverType</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.CoverIssuer</MudTd>
+        <MudTd DataLabel="CoverNumber">@context.Number</MudTd>
+        <MudTd DataLabel="CoverValue">@context.CoverValue</MudTd>
+        <MudTd DataLabel="Description">
+            <MudHighlighter Text="@context.Description" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.AmountIssued</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Atlas</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Alberta</MudTd>
+
+        <MudTd DataLabel="Actions" Style="text-align:right">
+            <MudMenu Label="@localizer["Actions"]" Variant="Variant.Filled" DisableElevation="true" EndIcon="@Icons.Filled.KeyboardArrowDown" IconColor="Color.Secondary">
+                <MudMenuItem @onclick="@(()=>InvokeModal(@context.Id))">@localizer["Edit"]</MudMenuItem>
+                <MudMenuItem @onclick="@(()=>Delete(@context.Id))">@localizer["Delete"]</MudMenuItem>
+            </MudMenu>
+        </MudTd>
+    </RowTemplate>
+    @*<RowEditingTemplate>
+        <MudTd></MudTd>
+        <MudTd DataLabel="Country">@context.Country"</MudTd>
+        <MudTd DataLabel="CoverDate">@context.CoverDate.ToString("yyyy/MM/dd")</MudTd>
+        <MudTd DataLabel="CoverType">@context.CoverType</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.CoverIssuer</MudTd>
+        <MudTd DataLabel="CoverNumber">@context.Number</MudTd>
+        <MudTd DataLabel="CoverValue">@context.CoverValue</MudTd>
+        <MudTd DataLabel="Description">
+            <MudTextField @bind-Value="@context.Description" Required />
+        </MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.AmountIssued</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Atlas</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Alberta</MudTd>
+    </RowEditingTemplate>*@
+    <ChildRowContent>
+        @if (context.ShowDetails)
+        {
+            <MudTr>
+                <td colspan="4">
+                    <MudCard Elevation="0">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.body1">Cover Photo</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-0">
+                            <MudItem>
+                                <MudAvatar Image="@(context.ImageDataUrl)" Square="true" Style="height: 100%; width: auto; max-height: 100%;"> </MudAvatar>
+                            </MudItem>
+                        </MudCardContent>
+                    </MudCard>
+                </td>
+            </MudTr>}
+    </ChildRowContent>
+    <PagerContent>
+        <TablePager />
+    </PagerContent>
+</MudTable>
+
+
+<!--<MudTable Elevation="25" Items="@pagedData" CanCancelEdit="true" CommitEditCommand="@editCoverCommand" Hover="true" Dense="true" Bordered="true" Striped="true">
+    <ToolBarContent>-->
+
+        @*@if (_authorizationService.AuthorizeAsync(AuthenticationStateProviderUser, Permissions.Covers.Create).Result.Succeeded)
+            {*@
+        <!--<div class="justify-center mud-text-align-center">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="@(()=>InvokeModal(0))">@localizer["Create"]</MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="@(()=>OnSearch(""))" Color="Color.Secondary">@localizer["Reload"]</MudButton>
+            <MudButton Variant="Variant.Filled" OnClick="@(ExportToExcel)" Color="Color.Surface">@localizer["Export"]</MudButton>
+        </div>-->
+        @*}*@
+        <!--<MudToolBarSpacer />
+        <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Placeholder="@localizer["Search"]" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverCountryField">Country</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverDateField">Date</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverTypeField">Type</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverIssuerField">Issuer</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverNumberField">#</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverValueField">Value</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverDescriptionField">Description</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverNumberIssuedField"># Issued</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverAtlatField">Atlas</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel T="GetAllPagedCoversResponse" SortLabel="coverAlbertaField">Alberta</MudTableSortLabel></MudTh>
+        <MudTh Style="text-align:right">@localizer["Actions"]</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd><MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@(() => ShowBtnPress(context.Id))">@((context.ShowDetails == true)? "-" : "+")</MudButton></MudTd>
+        <MudTd DataLabel="Country">
+            <MudHighlighter Text="@context.Country" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverDate">
+            <MudHighlighter Text="@context.CoverDate.ToString("yyyy/MM/dd")" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverType">@context.CoverType</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.CoverIssuer</MudTd>
+        <MudTd DataLabel="CoverNumber">@context.Number</MudTd>
+        <MudTd DataLabel="CoverValue">@context.CoverValue</MudTd>
+        <MudTd DataLabel="Description">
+            <MudHighlighter Text="@context.Description" HighlightedText="@searchString" />
+        </MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.AmountIssued</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Atlas</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Alberta</MudTd>
+
+        <MudTd DataLabel="Actions" Style="text-align:right">
+            <MudMenu Label="@localizer["Actions"]" Variant="Variant.Filled" DisableElevation="true" EndIcon="@Icons.Filled.KeyboardArrowDown" IconColor="Color.Secondary">
+                <MudMenuItem @onclick="@(()=>InvokeModal(@context.Id))">@localizer["Edit"]</MudMenuItem>
+                <MudMenuItem @onclick="@(()=>Delete(@context.Id))">@localizer["Delete"]</MudMenuItem>
+            </MudMenu>
+        </MudTd>
+    </RowTemplate>
+    <RowEditingTemplate>
+        <MudTd></MudTd>
+        <MudTd DataLabel="Country">@context.Country"</MudTd>
+        <MudTd DataLabel="CoverDate">@context.CoverDate.ToString("yyyy/MM/dd")</MudTd>
+        <MudTd DataLabel="CoverType">@context.CoverType</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.CoverIssuer</MudTd>
+        <MudTd DataLabel="CoverNumber">@context.Number</MudTd>
+        <MudTd DataLabel="CoverValue">@context.CoverValue</MudTd>
+        <MudTd DataLabel="Description">
+            <MudTextField @bind-Value="@context.Description" Required />
+        </MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.AmountIssued</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Atlas</MudTd>
+        <MudTd DataLabel="CoverIssuer">@context.Alberta</MudTd>
+        <MudTd>
+        </MudTd>
+    </RowEditingTemplate>
+    <ChildRowContent>
+        @if (context.ShowDetails)
+        {
+            <MudTr>
+                <td colspan="4">
+                    <MudCard Elevation="0">
+                        <MudCardHeader>
+                            <CardHeaderContent>
+                                <MudText Typo="Typo.body1">Cover Photo</MudText>
+                            </CardHeaderContent>
+                        </MudCardHeader>
+                        <MudCardContent Class="pa-0">
+                            <MudItem>
+                                <MudAvatar Image="@(context.ImageDataUrl)" Square="true" Style="height: 100%; width: auto; max-height: 100%;"> </MudAvatar>
+                            </MudItem>
+                        </MudCardContent>
+                    </MudCard>
+                </td>
+            </MudTr>}
+    </ChildRowContent>
+    <PagerContent>
+        <TablePager />
+    </PagerContent>
+</MudTable>-->

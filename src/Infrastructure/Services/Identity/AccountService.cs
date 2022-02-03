@@ -13,14 +13,14 @@ namespace Philcosa.Infrastructure.Services.Identity
 {
     public class AccountService : IAccountService
     {
-        private readonly UserManager<BlazorHeroUser> _userManager;
-        private readonly SignInManager<BlazorHeroUser> _signInManager;
+        private readonly UserManager<PhilcosaUser> _userManager;
+        private readonly SignInManager<PhilcosaUser> _signInManager;
         private readonly IUploadService _uploadService;
         private readonly IStringLocalizer<AccountService> _localizer;
 
         public AccountService(
-            UserManager<BlazorHeroUser> userManager,
-            SignInManager<BlazorHeroUser> signInManager,
+            UserManager<PhilcosaUser> userManager,
+            SignInManager<PhilcosaUser> signInManager,
             IUploadService uploadService,
             IStringLocalizer<AccountService> localizer)
         {

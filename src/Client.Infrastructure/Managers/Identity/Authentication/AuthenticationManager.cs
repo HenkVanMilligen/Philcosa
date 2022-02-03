@@ -57,7 +57,7 @@ namespace Philcosa.Client.Infrastructure.Managers.Identity.Authentication
                 {
                     await _localStorage.SetItemAsync(StorageConstants.Local.UserImageURL, userImageURL);
                 }
-                ((BlazorHeroStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(model.Email);
+                ((PhilcosaStateProvider)_authenticationStateProvider).MarkUserAsAuthenticated(model.Email);
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 return await Result.SuccessAsync();
             }
@@ -72,7 +72,7 @@ namespace Philcosa.Client.Infrastructure.Managers.Identity.Authentication
             await _localStorage.RemoveItemAsync(StorageConstants.Local.AuthToken);
             await _localStorage.RemoveItemAsync(StorageConstants.Local.RefreshToken);
             await _localStorage.RemoveItemAsync(StorageConstants.Local.UserImageURL);
-            ((BlazorHeroStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
+            ((PhilcosaStateProvider)_authenticationStateProvider).MarkUserAsLoggedOut();
             _httpClient.DefaultRequestHeaders.Authorization = null;
             return await Result.SuccessAsync();
         }

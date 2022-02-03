@@ -1,0 +1,48 @@
+﻿@using Philcosa.Application.Features.Themes.Commands.AddEdit
+<EditForm Model="@AddEditThemeModel" OnValidSubmit="SaveAsync">
+    <FluentValidationValidator @ref="_fluentValidationValidator" />
+    <MudDialog>
+        <TitleContent>
+            @{
+                if (AddEditThemeModel.Id == 0)
+                {
+                    <MudText Typo="Typo.h6">
+                        <MudIcon Icon="@Icons.Material.Filled.Add" Class="mr-3 mb-n1" />
+                        Add Cover Type
+                    </MudText>
+                }
+                else
+                {
+                    <MudText Typo="Typo.h6">
+                        <MudIcon Icon="@Icons.Material.Filled.Update" Class="mr-3 mb-n1" />
+                        Update Cover Type
+                    </MudText>
+                }
+            }
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                @if (AddEditThemeModel.Id != 0)
+                {
+                    <MudItem xs="12" md="6">
+                        <MudTextField Disabled For="@(() => AddEditThemeModel.Id)" @bind-Value="AddEditThemeModel.Id" Label="Id" />
+                    </MudItem>
+                }
+                <MudItem xs="12" md="6">
+                    <MudTextField T="string" For="@(() => AddEditThemeModel.Name)" @bind-Value="AddEditThemeModel.Name" Label="Name" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton Variant="Variant.Filled" OnClick="Cancel">Cancel</MudButton>
+            @if (AddEditThemeModel.Id != 0)
+            {
+                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit" Disabled="@(!validated)" Color="Color.Secondary">Update</MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit" Disabled="@(!validated)" Color="Color.Success">Save</MudButton>
+            }
+        </DialogActions>
+    </MudDialog>
+</EditForm>

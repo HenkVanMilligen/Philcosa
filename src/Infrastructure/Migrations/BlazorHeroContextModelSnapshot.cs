@@ -15,16 +15,96 @@ namespace Philcosa.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClaims", "Identity");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLogins", "Identity");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles", "Identity");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("UserTokens", "Identity");
+                });
 
             modelBuilder.Entity("Philcosa.Application.Models.Chat.ChatHistory<Philcosa.Infrastructure.Models.Identity.BlazorHeroUser>", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -52,7 +132,7 @@ namespace Philcosa.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -85,7 +165,7 @@ namespace Philcosa.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("Barcode")
                         .HasColumnType("nvarchar(max)");
@@ -124,12 +204,729 @@ namespace Philcosa.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Philcosa.Domain.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "VEN",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 483, DateTimeKind.Local).AddTicks(7816),
+                            Name = "Venda"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "TRA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(142),
+                            Name = "Transkei"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "CIS",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(164),
+                            Name = "Ciskei"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "BOP",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(167),
+                            Name = "Bophuthatswana"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "SWA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(169),
+                            Name = "South West Africa"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "RSA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(171),
+                            Name = "South Africa"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "NAM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 487, DateTimeKind.Local).AddTicks(173),
+                            Name = "Namibia"
+                        });
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Cover", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Alberta")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("AmountIssued")
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
+                    b.Property<string>("Atlas")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<int?>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CoverDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CoverIssuerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CoverTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("IdOnDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageDataUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Number")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int?>("ValueId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("CoverIssuerId");
+
+                    b.HasIndex("CoverTypeId");
+
+                    b.HasIndex("ValueId");
+
+                    b.ToTable("Covers");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverIssuer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CoverIssuers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "APH",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(3673),
+                            Name = "Airphilsa"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "CAP",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5550),
+                            Name = "Caprivi Airways"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "FED",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5573),
+                            Name = "Philatelic Federation"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "GLD",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5595),
+                            Name = "First Day Fabrics (GOLD)"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "SLK",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5656),
+                            Name = "First Day Fabrics (SILK)"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "FST",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5699),
+                            Name = "Flitestar"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Code = "FAL",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5712),
+                            Name = "Foreign Airline"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "KPA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5729),
+                            Name = "Kempton Park Philatelic Society (Kemp Air)"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "KPC",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5743),
+                            Name = "Kempton Park Philatelic Society (Kemp kard)"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Code = "KPK",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5758),
+                            Name = "Kempton Park Philatelic Society (Kemp Kover"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Code = "KPM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5772),
+                            Name = "Kempton Park Philatelic Society (Kemp Maksikard)"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Code = "NAM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5789),
+                            Name = "Nam Post"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Code = "NAA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5805),
+                            Name = "Namib Air/Air Namibia"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Code = "NAD",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5824),
+                            Name = "Namib Air/Air Namibia (Delivery flights)"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Code = "PRV",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5849),
+                            Name = "Private"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Code = "PRC",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5863),
+                            Name = "Private (Ciskei Handcancelled)"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Code = "SMA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5877),
+                            Name = "SA Air Force Museum (Anniversary Flights)"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Code = "SMO",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5892),
+                            Name = "SA Air Force Museum (Original Series)"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Code = "SMS",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5905),
+                            Name = "SA Air Force Museum (Spesials)"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Code = "SMW",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5919),
+                            Name = "SA Air Force Museum (World War Series)"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Code = "ARM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5955),
+                            Name = "SA Army"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Code = "DEF",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5969),
+                            Name = "SA Defence Force"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Code = "NAV",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5981),
+                            Name = "SA Navy"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Code = "FOU",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(5995),
+                            Name = "SA Philatelic Foundation"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Code = "SAP",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6007),
+                            Name = "SA Police"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Code = "SPO",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6020),
+                            Name = "SA Post Office"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Code = "SAR",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6034),
+                            Name = "SA Railway Services"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Code = "SAT",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6046),
+                            Name = "SA Transport Services"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Code = "SHP",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6059),
+                            Name = "Ship Society of SA"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Code = "SHS",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6073),
+                            Name = "Simonstown Historical Society"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Code = "SNM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6086),
+                            Name = "Simonstown Navy Museum"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Code = "AER",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6100),
+                            Name = "South African Air Force (Aerobic)"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Code = "SAA",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6113),
+                            Name = "South African Airways"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Code = "SAM",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6127),
+                            Name = "South African Airways Museum"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Code = "TRS",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6140),
+                            Name = "The Railway Society"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Code = "UNN",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6153),
+                            Name = "United Nations"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Code = "WPH",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6166),
+                            Name = "Warner Pharmaceuticals"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Code = "WWF",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 181, DateTimeKind.Local).AddTicks(6369),
+                            Name = "World Wildlife Fund"
+                        });
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverTheme", b =>
+                {
+                    b.Property<int>("CoverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ThemeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CoverId", "ThemeId");
+
+                    b.HasIndex("ThemeId");
+
+                    b.ToTable("CoverThemes");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CoverTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "FDC",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5735),
+                            Name = "First Day"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "CMC",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5943),
+                            Name = "Comemorative"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "FLT",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5946),
+                            Name = "Flight"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "MIL",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5948),
+                            Name = "Military"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "FIL",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5949),
+                            Name = "Filatelic"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Code = "BAL",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5951),
+                            Name = "Balloon"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Code = "RWY",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 488, DateTimeKind.Local).AddTicks(5953),
+                            Name = "Railway"
+                        });
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverValue", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("MaxValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("MinValue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CoverValues");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Code = "$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(3465),
+                            MaxValue = 5m,
+                            MinValue = 0m
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Code = "$$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(4427),
+                            MaxValue = 15m,
+                            MinValue = 5.01m
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Code = "$$$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(4489),
+                            MaxValue = 50m,
+                            MinValue = 15.01m
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Code = "$$$$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(4492),
+                            MaxValue = 150m,
+                            MinValue = 50.01m
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Code = "$$$$$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(4494),
+                            MaxValue = 500m,
+                            MinValue = 150.01m
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Code = "$$$$$$",
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 5, 59, 489, DateTimeKind.Local).AddTicks(4496),
+                            MinValue = 500.01m
+                        });
+                });
+
             modelBuilder.Entity("Philcosa.Domain.Entities.ExtendedAttributes.DocumentExtendedAttribute", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -189,7 +986,7 @@ namespace Philcosa.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -230,7 +1027,7 @@ namespace Philcosa.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -255,12 +1052,862 @@ namespace Philcosa.Infrastructure.Migrations
                     b.ToTable("DocumentTypes");
                 });
 
+            modelBuilder.Entity("Philcosa.Domain.Entities.Theme", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Themes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(2983),
+                            Name = "Afrikaans language"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4397),
+                            Name = "Agriculture/Farming"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4408),
+                            Name = "Antarctica"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4413),
+                            Name = "Apartheid"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4420),
+                            Name = "Architecture"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4446),
+                            Name = "Arts/Culture/Traditions"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4450),
+                            Name = "Astronomy/Space"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4462),
+                            Name = "Atletics"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4479),
+                            Name = "Balloon Flights"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4495),
+                            Name = "Birds/Bats"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4501),
+                            Name = "Boer War"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4507),
+                            Name = "Boxing"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4513),
+                            Name = "Boy Scouts/Girl Guides"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4519),
+                            Name = "Bridges/Dams"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4524),
+                            Name = "Butterflies"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4530),
+                            Name = "Cars"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4537),
+                            Name = "Cats/Dogs"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4544),
+                            Name = "Child"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4551),
+                            Name = "Child Paintings"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4557),
+                            Name = "Christmas"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4564),
+                            Name = "Communication"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4570),
+                            Name = "Community Services"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4576),
+                            Name = "Constitution"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4583),
+                            Name = "Cricket"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4588),
+                            Name = "Definitive Series"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4596),
+                            Name = "Dinosaurs/Fossils/Archaeology"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4603),
+                            Name = "Diplomacy"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4610),
+                            Name = "Disabled"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4666),
+                            Name = "Easter"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4698),
+                            Name = "Education"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4721),
+                            Name = "Energy"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4727),
+                            Name = "Famous Persons"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4733),
+                            Name = "Fish and Marine Life"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4740),
+                            Name = "Fishing/Angling"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4747),
+                            Name = "Flags"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4758),
+                            Name = "Flight and Aircraft"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4764),
+                            Name = "Flora/Flowers"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4770),
+                            Name = "Food and Drink"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4777),
+                            Name = "Football/Soccer"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4784),
+                            Name = "Forestry/Trees"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4791),
+                            Name = "Forts and Castles"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4797),
+                            Name = "Frogs"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4803),
+                            Name = "Fruit/Vegetables"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4809),
+                            Name = "Gem Stones/Jewels"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4816),
+                            Name = "Geology"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4822),
+                            Name = "Golf"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4828),
+                            Name = "Government and Politics"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4835),
+                            Name = "Grasses"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4844),
+                            Name = "Hares/Rabbits"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4852),
+                            Name = "Health/Medicine"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4859),
+                            Name = "Heraldry/Coat of Arms"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4867),
+                            Name = "Horses/Equestrian"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4875),
+                            Name = "Insects/Bees"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4883),
+                            Name = "ITU"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4891),
+                            Name = "Landscapes/Nature"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4900),
+                            Name = "Law"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4908),
+                            Name = "Lions International"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4916),
+                            Name = "Literature/Writers"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4926),
+                            Name = "Mandela"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4935),
+                            Name = "Manufacturing/Industries"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4943),
+                            Name = "Maps"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4951),
+                            Name = "Meteorology/Weather"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4960),
+                            Name = "Military"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4969),
+                            Name = "Millenium"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4978),
+                            Name = "Mining/Minerals"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4989),
+                            Name = "Monkeys and Baboons"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(4998),
+                            Name = "Monuments"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5011),
+                            Name = "Museums"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5053),
+                            Name = "Mushrooms/Fungi"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5063),
+                            Name = "Music"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5072),
+                            Name = "National Festivals"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5082),
+                            Name = "Nursing"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5095),
+                            Name = "Olympic Games"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5105),
+                            Name = "Orchids"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5116),
+                            Name = "Paintings"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5126),
+                            Name = "Platinum"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5136),
+                            Name = "Police"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5146),
+                            Name = "Postal History"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5155),
+                            Name = "Presidents and Leaders"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5165),
+                            Name = "Railway/Trains"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5177),
+                            Name = "Red Cross"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5188),
+                            Name = "Religion/Churches"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5199),
+                            Name = "Rivers"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5209),
+                            Name = "Road Safety"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5221),
+                            Name = "Roses"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5232),
+                            Name = "Rotary International"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5243),
+                            Name = "Royals"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5255),
+                            Name = "Rugby"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5267),
+                            Name = "Science and Technology"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5279),
+                            Name = "Settlers"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5292),
+                            Name = "Shells"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5304),
+                            Name = "Ships/Maritime"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5316),
+                            Name = "Snakes/Lizards/Reptiles"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5328),
+                            Name = "Spiders"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5340),
+                            Name = "Sport"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5353),
+                            Name = "Stamp Day"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5365),
+                            Name = "Stamp Exhibition"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5377),
+                            Name = "Stamp on Stamps"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5390),
+                            Name = "Swimming"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5403),
+                            Name = "Tennis"
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5417),
+                            Name = "Tourism"
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5429),
+                            Name = "Towns/Cities History"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5442),
+                            Name = "Transport"
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5455),
+                            Name = "Triangle Stamps"
+                        },
+                        new
+                        {
+                            Id = 105,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5469),
+                            Name = "Unicef"
+                        },
+                        new
+                        {
+                            Id = 106,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5482),
+                            Name = "Uniforms/Costumes"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5495),
+                            Name = "United Nations"
+                        },
+                        new
+                        {
+                            Id = 108,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5508),
+                            Name = "UPU"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5521),
+                            Name = "van Riebeeck"
+                        },
+                        new
+                        {
+                            Id = 110,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5534),
+                            Name = "Voortrekkers"
+                        },
+                        new
+                        {
+                            Id = 111,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5546),
+                            Name = "Water and Sanitation"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5559),
+                            Name = "Waterfalls"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5572),
+                            Name = "Whales/Dolphins/Sharks"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5585),
+                            Name = "Wildlife"
+                        },
+                        new
+                        {
+                            Id = 115,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5598),
+                            Name = "Writing/Printing"
+                        },
+                        new
+                        {
+                            Id = 116,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5611),
+                            Name = "WWF"
+                        },
+                        new
+                        {
+                            Id = 117,
+                            CreatedBy = "DataSeed",
+                            CreatedOn = new DateTime(2022, 2, 2, 16, 6, 1, 147, DateTimeKind.Local).AddTicks(5655),
+                            Name = "Chinese year theme"
+                        });
+                });
+
             modelBuilder.Entity("Philcosa.Infrastructure.Models.Audit.Audit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("AffectedColumns")
                         .HasColumnType("nvarchar(max)");
@@ -338,7 +1985,7 @@ namespace Philcosa.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -479,145 +2126,6 @@ namespace Philcosa.Infrastructure.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserClaims", "Identity");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserLogins", "Identity");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("UserRoles", "Identity");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("UserTokens", "Identity");
-                });
-
-            modelBuilder.Entity("Philcosa.Application.Models.Chat.ChatHistory<Philcosa.Infrastructure.Models.Identity.BlazorHeroUser>", b =>
-                {
-                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroUser", "FromUser")
-                        .WithMany("ChatHistoryFromUsers")
-                        .HasForeignKey("FromUserId");
-
-                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroUser", "ToUser")
-                        .WithMany("ChatHistoryToUsers")
-                        .HasForeignKey("ToUserId");
-
-                    b.Navigation("FromUser");
-
-                    b.Navigation("ToUser");
-                });
-
-            modelBuilder.Entity("Philcosa.Domain.Entities.Catalog.Product", b =>
-                {
-                    b.HasOne("Philcosa.Domain.Entities.Catalog.Brand", "Brand")
-                        .WithMany()
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
-                });
-
-            modelBuilder.Entity("Philcosa.Domain.Entities.ExtendedAttributes.DocumentExtendedAttribute", b =>
-                {
-                    b.HasOne("Philcosa.Domain.Entities.Misc.Document", "Entity")
-                        .WithMany("ExtendedAttributes")
-                        .HasForeignKey("EntityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Entity");
-                });
-
-            modelBuilder.Entity("Philcosa.Domain.Entities.Misc.Document", b =>
-                {
-                    b.HasOne("Philcosa.Domain.Entities.Misc.DocumentType", "DocumentType")
-                        .WithMany()
-                        .HasForeignKey("DocumentTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DocumentType");
-                });
-
-            modelBuilder.Entity("Philcosa.Infrastructure.Models.Identity.BlazorHeroRoleClaim", b =>
-                {
-                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroRole", "Role")
-                        .WithMany("RoleClaims")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
                     b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
@@ -658,9 +2166,144 @@ namespace Philcosa.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Philcosa.Application.Models.Chat.ChatHistory<Philcosa.Infrastructure.Models.Identity.BlazorHeroUser>", b =>
+                {
+                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroUser", "FromUser")
+                        .WithMany("ChatHistoryFromUsers")
+                        .HasForeignKey("FromUserId");
+
+                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroUser", "ToUser")
+                        .WithMany("ChatHistoryToUsers")
+                        .HasForeignKey("ToUserId");
+
+                    b.Navigation("FromUser");
+
+                    b.Navigation("ToUser");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Catalog.Product", b =>
+                {
+                    b.HasOne("Philcosa.Domain.Entities.Catalog.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Cover", b =>
+                {
+                    b.HasOne("Philcosa.Domain.Entities.Country", "Country")
+                        .WithMany("Covers")
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("Philcosa.Domain.Entities.CoverIssuer", "CoverIssuer")
+                        .WithMany("Covers")
+                        .HasForeignKey("CoverIssuerId");
+
+                    b.HasOne("Philcosa.Domain.Entities.CoverType", "CoverType")
+                        .WithMany("Covers")
+                        .HasForeignKey("CoverTypeId");
+
+                    b.HasOne("Philcosa.Domain.Entities.CoverValue", "Value")
+                        .WithMany("Covers")
+                        .HasForeignKey("ValueId");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("CoverIssuer");
+
+                    b.Navigation("CoverType");
+
+                    b.Navigation("Value");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverTheme", b =>
+                {
+                    b.HasOne("Philcosa.Domain.Entities.Cover", "Cover")
+                        .WithMany("CoverThemes")
+                        .HasForeignKey("CoverId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Philcosa.Domain.Entities.Theme", "Theme")
+                        .WithMany("CoverTheme")
+                        .HasForeignKey("ThemeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cover");
+
+                    b.Navigation("Theme");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.ExtendedAttributes.DocumentExtendedAttribute", b =>
+                {
+                    b.HasOne("Philcosa.Domain.Entities.Misc.Document", "Entity")
+                        .WithMany("ExtendedAttributes")
+                        .HasForeignKey("EntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Misc.Document", b =>
+                {
+                    b.HasOne("Philcosa.Domain.Entities.Misc.DocumentType", "DocumentType")
+                        .WithMany()
+                        .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DocumentType");
+                });
+
+            modelBuilder.Entity("Philcosa.Infrastructure.Models.Identity.BlazorHeroRoleClaim", b =>
+                {
+                    b.HasOne("Philcosa.Infrastructure.Models.Identity.BlazorHeroRole", "Role")
+                        .WithMany("RoleClaims")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Country", b =>
+                {
+                    b.Navigation("Covers");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Cover", b =>
+                {
+                    b.Navigation("CoverThemes");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverIssuer", b =>
+                {
+                    b.Navigation("Covers");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverType", b =>
+                {
+                    b.Navigation("Covers");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.CoverValue", b =>
+                {
+                    b.Navigation("Covers");
+                });
+
             modelBuilder.Entity("Philcosa.Domain.Entities.Misc.Document", b =>
                 {
                     b.Navigation("ExtendedAttributes");
+                });
+
+            modelBuilder.Entity("Philcosa.Domain.Entities.Theme", b =>
+                {
+                    b.Navigation("CoverTheme");
                 });
 
             modelBuilder.Entity("Philcosa.Infrastructure.Models.Identity.BlazorHeroRole", b =>

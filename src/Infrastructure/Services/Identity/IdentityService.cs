@@ -23,15 +23,15 @@ namespace Philcosa.Infrastructure.Services.Identity
     {
         private const string InvalidErrorMessage = "Invalid email or password.";
 
-        private readonly UserManager<BlazorHeroUser> _userManager;
+        private readonly UserManager<PhilcosaUser> _userManager;
         private readonly RoleManager<BlazorHeroRole> _roleManager;
         private readonly AppConfiguration _appConfig;
-        private readonly SignInManager<BlazorHeroUser> _signInManager;
+        private readonly SignInManager<PhilcosaUser> _signInManager;
         private readonly IStringLocalizer<IdentityService> _localizer;
 
         public IdentityService(
-            UserManager<BlazorHeroUser> userManager, RoleManager<BlazorHeroRole> roleManager,
-            IOptions<AppConfiguration> appConfig, SignInManager<BlazorHeroUser> signInManager,
+            UserManager<PhilcosaUser> userManager, RoleManager<BlazorHeroRole> roleManager,
+            IOptions<AppConfiguration> appConfig, SignInManager<PhilcosaUser> signInManager,
             IStringLocalizer<IdentityService> localizer)
         {
             _userManager = userManager;
@@ -92,13 +92,13 @@ namespace Philcosa.Infrastructure.Services.Identity
             return await Result<TokenResponse>.SuccessAsync(response);
         }
 
-        private async Task<string> GenerateJwtAsync(BlazorHeroUser user)
+        private async Task<string> GenerateJwtAsync(PhilcosaUser user)
         {
             var token = GenerateEncryptedToken(GetSigningCredentials(), await GetClaimsAsync(user));
             return token;
         }
 
-        private async Task<IEnumerable<Claim>> GetClaimsAsync(BlazorHeroUser user)
+        private async Task<IEnumerable<Claim>> GetClaimsAsync(PhilcosaUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
             var roles = await _userManager.GetRolesAsync(user);

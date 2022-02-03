@@ -3,7 +3,7 @@ using Philcosa.Domain.Entities.Catalog;
 
 namespace Philcosa.Application.Specifications.Catalog
 {
-    public class ProductFilterSpecification : HeroSpecification<Product>
+    public class ProductFilterSpecification : ApplicationSpecification<Product>
     {
         public ProductFilterSpecification(string searchString)
         {

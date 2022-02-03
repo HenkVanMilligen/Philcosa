@@ -10,6 +10,10 @@ using Philcosa.Domain.Entities.Catalog;
 using Philcosa.Domain.Contracts;
 using Philcosa.Domain.Entities.ExtendedAttributes;
 using Philcosa.Infrastructure.Models.Identity;
+using Philcosa.Domain.Entities;
+using Philcosa.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Hosting;
+using System.Diagnostics;
 
 namespace Philcosa.Infrastructure.Contexts
 {
@@ -17,20 +21,30 @@ namespace Philcosa.Infrastructure.Contexts
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTimeService _dateTimeService;
+        private readonly bool _isDevelopment;
 
-        public PhilcosaContext(DbContextOptions<PhilcosaContext> options, ICurrentUserService currentUserService, IDateTimeService dateTimeService)
+        public PhilcosaContext(DbContextOptions<PhilcosaContext> options, ICurrentUserService currentUserService, IDateTimeService dateTimeService, IHostingEnvironment env)
             : base(options)
         {
+            _isDevelopment = env.IsDevelopment();
             _currentUserService = currentUserService;
             _dateTimeService = dateTimeService;
         }
 
-        public DbSet<ChatHistory<BlazorHeroUser>> ChatHistories { get; set; }
+        public DbSet<ChatHistory<PhilcosaUser>> ChatHistories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<DocumentType> DocumentTypes { get; set; }
         public DbSet<DocumentExtendedAttribute> DocumentExtendedAttributes { get; set; }
+
+        public DbSet<Cover> Covers { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+        public DbSet<CoverTheme> CoverThemes { get; set; }
+        public DbSet<CoverType> CoverTypes { get; set; }
+        public DbSet<CoverValue> CoverValues { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<CoverIssuer> CoverIssuers { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {
@@ -67,8 +81,19 @@ namespace Philcosa.Infrastructure.Contexts
             {
                 property.SetColumnType("decimal(18,2)");
             }
+            //Debugger.Launch();
+
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new CoverTypeConfiguration());
+            builder.ApplyConfiguration(new CoverValueConfiguration());
+            var themeConfiguration = new ThemeConfiguration(_isDevelopment);
+            builder.ApplyConfiguration(themeConfiguration);
+            var coverIssureConfiguration = new CoverIssuerEntityConfiguration(_isDevelopment);
+            builder.ApplyConfiguration(coverIssureConfiguration);
+            builder.ApplyConfiguration(new CoverThemeConfiguration());
+
             base.OnModelCreating(builder);
-            builder.Entity<ChatHistory<BlazorHeroUser>>(entity =>
+            builder.Entity<ChatHistory<PhilcosaUser>>(entity =>
             {
                 entity.ToTable("ChatHistory");
 
@@ -82,7 +107,7 @@ namespace Philcosa.Infrastructure.Contexts
                     .HasForeignKey(d => d.ToUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
-            builder.Entity<BlazorHeroUser>(entity =>
+            builder.Entity<PhilcosaUser>(entity =>
             {
                 entity.ToTable(name: "Users", "Identity");
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();

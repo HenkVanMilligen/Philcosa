@@ -20,7 +20,9 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.10.0" />
     <PackageReference Include="Blazored.LocalStorage" Version="4.1.2" />
+    <PackageReference Include="CsvHelper" Version="27.2.1" />
     <PackageReference Include="EPPlus" Version="5.7.0" />
     <PackageReference Include="Hangfire.Core" Version="1.7.23" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.7" />
@@ -36,6 +38,20 @@
   <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Seeds\CoverIssuers.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Seeds\Covers.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Seeds\IssuedByEntities.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Seeds\Themes.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

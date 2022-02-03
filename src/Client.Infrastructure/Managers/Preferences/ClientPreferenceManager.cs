@@ -73,9 +73,9 @@ namespace Philcosa.Client.Infrastructure.Managers.Preferences
             var preference = await GetPreference() as ClientPreference;
             if (preference != null)
             {
-                if (preference.IsDarkMode == true) return BlazorHeroTheme.DarkTheme;
+                if (preference.IsDarkMode == true) return PhilcosaTheme.DarkTheme;
             }
-            return BlazorHeroTheme.DefaultTheme;
+            return PhilcosaTheme.DefaultTheme;
         }
         public async Task<bool> IsRTL()
         {

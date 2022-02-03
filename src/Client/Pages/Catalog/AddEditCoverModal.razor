@@ -1,0 +1,163 @@
+@using Philcosa.Application.Features.Countries.Queries.GetAll;
+@using Philcosa.Application.Features.CoverTypes.Queries.GetAll;
+@using Philcosa.Application.Features.CoverIssuers.Queries.GetAll;
+@using Philcosa.Application.Features.CoverValues.Queries.GetAll;
+@using Philcosa.Application.Features.Themes.Queries.GetAll;
+
+
+<EditForm Model="@AddEditCoverModel" OnValidSubmit="SaveAsync">
+    <FluentValidationValidator @ref="_fluentValidationValidator" />
+    <MudDialog>
+        <TitleContent>
+            @{
+                if (AddEditCoverModel.Id == 0)
+                {
+                    <MudText Typo="Typo.h6">
+                        <MudIcon Icon="@Icons.Material.Filled.Add" Class="mr-3 mb-n1" />
+                        @localizer["Add Cover"]
+                    </MudText>
+                }
+                else
+                {
+                    <MudText Typo="Typo.h6">
+                        <MudIcon Icon="@Icons.Material.Filled.Update" Class="mr-3 mb-n1" />
+                        @localizer["Update Cover"]
+                    </MudText>
+                }
+            }
+        </TitleContent>
+        <DialogContent>
+            <MudContainer Style="max-height: 700px; overflow-y: scroll ">
+                <MudGrid>
+                    @if (AddEditCoverModel.Id != 0)
+                    {
+                        <MudItem xs="12" md="6">
+                            <MudTextField Disabled For="@(() => AddEditCoverModel.Id)" @bind-Value="AddEditCoverModel.Id" Label="@localizer["Id"]" />
+                        </MudItem>
+                    }
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllCountriesResponse" Clearable="true" Label="Country" Value="selectedCountry" SearchFunc="@SearchCountries"
+                                         ValueChanged="@(s => OnCountrySelect(s))" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudDatePicker Label="Cover Date" @bind-Date="AddEditCoverModel.CoverDate" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllCoverTypesResponse" Clearable="true" Label="Cover Type" Value="selectedType" SearchFunc="@SearchCoverTypes"
+                                         ValueChanged="@(s => OnCoverTypeSelect(s))" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllCoverIssuersResponse" Clearable="true" Label="Cover Issuer" Value="selectedIssuer" SearchFunc="@SearchCoverIssuers"
+                                         ValueChanged="@(s => OnCoverIsseuerSelect(s))" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudTextField For="@(() => AddEditCoverModel.Number)" @bind-Value="AddEditCoverModel.Number" Label="Number" />
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudSelect Dense="true" T="int?" Label="Cover Value" For="@(() => AddEditCoverModel.ValueId)" @bind-Value="AddEditCoverModel.ValueId" Variant="Variant.Filled">
+                            @foreach (var value in CoverValues)
+                            {
+                                <MudSelectItem T="int?" Value="@(value.Id)">@value.Code</MudSelectItem>
+                            }
+                        </MudSelect>
+                    </MudItem>
+                    <MudItem xs="12" md="6">
+                        <MudTextField For="@(() => AddEditCoverModel.Description)" @bind-Value="AddEditCoverModel.Description" Label="Description" />
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudTextField For="@(() => AddEditCoverModel.AmountIssued)" @bind-Value="AddEditCoverModel.AmountIssued" Label="Amount Issued" />
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudTextField For="@(() => AddEditCoverModel.Atlas)" @bind-Value="AddEditCoverModel.Atlas" Label="Atlas" />
+                    </MudItem>
+
+                    <MudItem xs="12" md="6">
+                        <MudTextField For="@(() => AddEditCoverModel.Alberta)" @bind-Value="AddEditCoverModel.Alberta" Label="Alberta" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllThemesResponse" Label="Cover Theme 1" Value="selectedTheme1" SearchFunc="@SearchThemes"
+                                         ValueChanged="@(s => OnTheme1Select(s))" Clearable="true" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllThemesResponse" Label="Cover Theme 2" Value="selectedTheme2" SearchFunc="@SearchThemes"
+                                         ValueChanged="@(s => OnTheme2Select(s))" Clearable="true" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllThemesResponse" Label="Cover Theme 3" Value="selectedTheme3" SearchFunc="@SearchThemes"
+                                         ValueChanged="@(s => OnTheme3Select(s))" Clearable="true" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+
+                    <MudItem xs="12" sm="6" md="4">
+                        <MudAutocomplete T="GetAllThemesResponse" Label="Cover Theme 4" Value="selectedTheme4" SearchFunc="@SearchThemes"
+                                         ValueChanged="@(s => OnTheme4Select(s))" Clearable="true" ResetValueOnEmptyText="@resetValueOnEmptyText" ToStringFunc="@(e => e==null? null : $"{e.Name}")"
+                                         CoerceText="@coerceText" CoerceValue="@coerceValue" />
+                    </MudItem>
+                    <MudItem xs="12" md="6">
+                        <MudItem>
+                            <MudAvatar Image="@(AddEditCoverModel.ImageDataURL)" Square="true" Style="height: auto; width: auto; max-height: 100%"> </MudAvatar>
+                        </MudItem>
+                        <MudItem>
+                            <InputFile id="fileInput" hidden OnChange="UploadFiles" />
+                            <div>
+                                <MudButton HtmlTag="label"
+                                           Variant="Variant.Text"
+                                           Color="Color.Primary"
+                                           Size="Size.Small"
+                                           StartIcon="@Icons.Filled.CloudUpload"
+                                           for="fileInput">
+                                    @localizer["Upload"]
+                                </MudButton>
+                                @if (!string.IsNullOrEmpty(AddEditCoverModel.ImageDataURL))
+                                {
+                                    <MudButton Variant="Variant.Text"
+                                               Color="Color.Info"
+                                               StartIcon="@Icons.Filled.RemoveRedEye"
+                                               Size="Size.Small"
+                                               Link="@(AddEditCoverModel.ImageDataURL)" Target="_blank">
+                                        @localizer["View"]
+                                    </MudButton>
+                                    <MudButton Variant="Variant.Text"
+                                               Color="Color.Error"
+                                               StartIcon="@Icons.Filled.Delete"
+                                               Size="Size.Small"
+                                               OnClick="DeleteAsync">
+                                        @localizer["Delete"]
+                                    </MudButton>
+
+                                }
+                            </div>
+                        </MudItem>
+                    </MudItem>
+                </MudGrid>
+            </MudContainer>
+        </DialogContent>
+        <DialogActions>
+            <MudButton Variant="Variant.Filled" OnClick="Cancel">@localizer["Cancel"]</MudButton>
+            @if (AddEditCoverModel.Id != 0)
+            {
+                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit" Disabled="@(!validated)" Color="Color.Secondary">@localizer["Update"]</MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled" ButtonType="ButtonType.Submit" Disabled="@(!validated)" Color="Color.Success">@localizer["Save"]</MudButton>
+            }
+        </DialogActions>
+    </MudDialog>
+</EditForm>

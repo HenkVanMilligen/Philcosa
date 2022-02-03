@@ -35,6 +35,13 @@
             {
                 return $"all-{entityFullName}-extended-attributes-{entityId}";
             }
+
+            public const string GetAllCountriesCacheKey = "all-countries";
+            public const string GetAllCoverTypesCacheKey = "all-covertypes";
+            public const string GetAllCoverValuesCacheKey = "all-covervalues";
+            public const string GetAllThemesCacheKey = "all-themes";
+            public const string GetAllCoverIssuersCacheKey = "all-coverissuers";
+            public const string GetAllCoverImagesCacheKey = "all-coverimages";
         }
 
         public static class MimeTypes

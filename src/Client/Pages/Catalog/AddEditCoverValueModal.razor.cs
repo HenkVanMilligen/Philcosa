@@ -1,0 +1,62 @@
+﻿using Philcosa.Client.Extensions;
+using Philcosa.Shared.Constants.Application;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.SignalR.Client;
+using MudBlazor;
+using System.Threading.Tasks;
+using Blazored.FluentValidation;
+using Philcosa.Application.Features.CoverValues.Commands.AddEdit;
+
+namespace Philcosa.Client.Pages.Catalog
+{
+    public partial class AddEditCoverValueModal
+    {
+
+        private FluentValidationValidator _fluentValidationValidator;
+        private bool validated => _fluentValidationValidator.Validate(options => { options.IncludeAllRuleSets(); });
+
+        [Parameter]
+        public AddEditCoverValueCommand AddEditCoverValueModel { get; set; } = new();
+
+        [CascadingParameter] private MudDialogInstance MudDialog { get; set; }
+        [CascadingParameter] public HubConnection hubConnection { get; set; }
+
+        public void Cancel()
+        {
+            MudDialog.Cancel();
+        }
+
+        private async Task SaveAsync()
+        {
+            var response = await _coverValueManager.SaveAsync(AddEditCoverValueModel);
+            if (response.Succeeded)
+            {
+                _snackBar.Add(response.Messages[0], Severity.Success);
+                MudDialog.Close();
+            }
+            else
+            {
+                foreach (var message in response.Messages)
+                {
+                    _snackBar.Add(message, Severity.Error);
+                }
+            }
+            await hubConnection.SendAsync(ApplicationConstants.SignalR.SendUpdateDashboard);
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            await LoadDataAsync();
+            hubConnection = hubConnection.TryInitialize(_navigationManager);
+            if (hubConnection.State == HubConnectionState.Disconnected)
+            {
+                await hubConnection.StartAsync();
+            }
+        }
+
+        private async Task LoadDataAsync()
+        {
+            await Task.CompletedTask;
+        }
+    }
+}

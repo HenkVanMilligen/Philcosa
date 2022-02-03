@@ -29,6 +29,12 @@
 @using Philcosa.Client.Infrastructure.Managers.Audit
 @using Philcosa.Client.Infrastructure.Managers.Misc.Document
 @using Philcosa.Client.Infrastructure.Managers.Misc.DocumentType
+@using Philcosa.Client.Infrastructure.Managers.Admin.Country
+@using Philcosa.Client.Infrastructure.Managers.Admin.CoverType
+@using Philcosa.Client.Infrastructure.Managers.Admin.CoverValue
+@using Philcosa.Client.Infrastructure.Managers.Admin.Theme
+@using Philcosa.Client.Infrastructure.Managers.Admin.CoverIssuer
+@using Philcosa.Client.Infrastructure.Managers.Admin.Cover
 
 @*Shared Libraries*@
 @using Philcosa.Shared.Constants.Permission
@@ -50,7 +56,7 @@
 @inject IAuthenticationManager _authenticationManager
 @inject IAccountManager _accountManager
 @inject NavigationManager _navigationManager
-@inject BlazorHeroStateProvider _stateProvider
+@inject PhilcosaStateProvider _stateProvider
 @inject IAuthorizationService _authorizationService
 @inject ISnackbar _snackBar
 @inject IDialogService _dialogService
@@ -60,3 +66,10 @@
 @inject IUserManager _userManager
 @inject ILocalStorageService _localStorage;
 @inject IJSRuntime _jsRuntime;
+
+@inject ICountryManager _countryManager
+@inject ICoverTypeManager _coverTypeManager
+@inject ICoverValueManager _coverValueManager
+@inject IThemeManager _themeManager
+@inject ICoverIssuerManager _coverIssuerManager
+@inject ICoverManager _coverManager

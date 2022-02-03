@@ -3,7 +3,7 @@ using Philcosa.Infrastructure.Models.Identity;
 
 namespace Philcosa.Infrastructure.Specifications
 {
-    public class UserFilterSpecification : HeroSpecification<BlazorHeroUser>
+    public class UserFilterSpecification : ApplicationSpecification<PhilcosaUser>
     {
         public UserFilterSpecification(string searchString)
         {

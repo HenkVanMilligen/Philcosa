@@ -8,7 +8,7 @@ using Philcosa.Domain.Contracts;
 
 namespace Philcosa.Infrastructure.Models.Identity
 {
-    public class BlazorHeroUser : IdentityUser<string>, IChatUser, IAuditableEntity<string>
+    public class PhilcosaUser : IdentityUser<string>, IChatUser, IAuditableEntity<string>
     {
         public string FirstName { get; set; }
 
@@ -30,13 +30,13 @@ namespace Philcosa.Infrastructure.Models.Identity
         public bool IsActive { get; set; }
         public string RefreshToken { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
-        public virtual ICollection<ChatHistory<BlazorHeroUser>> ChatHistoryFromUsers { get; set; }
-        public virtual ICollection<ChatHistory<BlazorHeroUser>> ChatHistoryToUsers { get; set; }
+        public virtual ICollection<ChatHistory<PhilcosaUser>> ChatHistoryFromUsers { get; set; }
+        public virtual ICollection<ChatHistory<PhilcosaUser>> ChatHistoryToUsers { get; set; }
 
-        public BlazorHeroUser()
+        public PhilcosaUser()
         {
-            ChatHistoryFromUsers = new HashSet<ChatHistory<BlazorHeroUser>>();
-            ChatHistoryToUsers = new HashSet<ChatHistory<BlazorHeroUser>>();
+            ChatHistoryFromUsers = new HashSet<ChatHistory<PhilcosaUser>>();
+            ChatHistoryToUsers = new HashSet<ChatHistory<PhilcosaUser>>();
         }
     }
 }

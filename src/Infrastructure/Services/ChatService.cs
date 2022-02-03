@@ -79,7 +79,7 @@ namespace Philcosa.Infrastructure.Services
         public async Task<IResult> SaveMessageAsync(ChatHistory<IChatUser> message)
         {
             message.ToUser = await _context.Users.Where(user => user.Id == message.ToUserId).FirstOrDefaultAsync();
-            await _context.ChatHistories.AddAsync(_mapper.Map<ChatHistory<BlazorHeroUser>>(message));
+            await _context.ChatHistories.AddAsync(_mapper.Map<ChatHistory<PhilcosaUser>>(message));
             await _context.SaveChangesAsync();
             return await Result.SuccessAsync();
         }

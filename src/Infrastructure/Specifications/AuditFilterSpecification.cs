@@ -3,7 +3,7 @@ using Philcosa.Infrastructure.Models.Audit;
 
 namespace Philcosa.Infrastructure.Specifications
 {
-    public class AuditFilterSpecification : HeroSpecification<Audit>
+    public class AuditFilterSpecification : ApplicationSpecification<Audit>
     {
         public AuditFilterSpecification(string userId, string searchString, bool searchInOldValues, bool searchInNewValues)
         {

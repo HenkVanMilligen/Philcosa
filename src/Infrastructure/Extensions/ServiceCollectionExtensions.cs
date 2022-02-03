@@ -30,7 +30,14 @@ namespace Philcosa.Infrastructure.Extensions
                 .AddTransient<IBrandRepository, BrandRepository>()
                 .AddTransient<IDocumentRepository, DocumentRepository>()
                 .AddTransient<IDocumentTypeRepository, DocumentTypeRepository>()
-                .AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+                .AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>))
+                .AddTransient<ICountryRepository, CountryRepository>()
+                .AddTransient<ICoverTypeRepository, CoverTypeRepository>()
+                .AddTransient<ICoverValueRepository, CoverValueRepository>()
+                .AddTransient<IThemeRepository, ThemeRepository>()
+                .AddTransient<ICoverIssuerRepository, CoverIssuerRepository>()
+                .AddTransient<ICoverRepository, CoverRepository>();
+
         }
 
         public static IServiceCollection AddExtendedAttributesUnitOfWork(this IServiceCollection services)

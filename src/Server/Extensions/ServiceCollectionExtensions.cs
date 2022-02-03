@@ -192,7 +192,7 @@ namespace Philcosa.Server.Extensions
             services
                 .AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>()
                 .AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>()
-                .AddIdentity<BlazorHeroUser, BlazorHeroRole>(options =>
+                .AddIdentity<PhilcosaUser, BlazorHeroRole>(options =>
                 {
                     options.Password.RequiredLength = 6;
                     options.Password.RequireDigit = false;

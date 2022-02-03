@@ -27,7 +27,7 @@ namespace Philcosa.Infrastructure.Services.Identity
 {
     public class UserService : IUserService
     {
-        private readonly UserManager<BlazorHeroUser> _userManager;
+        private readonly UserManager<PhilcosaUser> _userManager;
         private readonly RoleManager<BlazorHeroRole> _roleManager;
         private readonly IMailService _mailService;
         private readonly IStringLocalizer<UserService> _localizer;
@@ -36,7 +36,7 @@ namespace Philcosa.Infrastructure.Services.Identity
         private readonly IMapper _mapper;
 
         public UserService(
-            UserManager<BlazorHeroUser> userManager,
+            UserManager<PhilcosaUser> userManager,
             IMapper mapper,
             RoleManager<BlazorHeroRole> roleManager,
             IMailService mailService,
@@ -67,7 +67,7 @@ namespace Philcosa.Infrastructure.Services.Identity
             {
                 return await Result.FailAsync(string.Format(_localizer["Username {0} is already taken."], request.UserName));
             }
-            var user = new BlazorHeroUser
+            var user = new PhilcosaUser
             {
                 Email = request.Email,
                 FirstName = request.FirstName,
@@ -120,7 +120,7 @@ namespace Philcosa.Infrastructure.Services.Identity
             }
         }
 
-        private async Task<string> SendVerificationEmail(BlazorHeroUser user, string origin)
+        private async Task<string> SendVerificationEmail(PhilcosaUser user, string origin)
         {
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -283,7 +283,7 @@ namespace Philcosa.Infrastructure.Services.Identity
                 .OrderByDescending(a => a.CreatedOn)
                 .ToListAsync();
             var result = await _excelService.ExportAsync(users, sheetName: _localizer["Users"],
-                mappers: new Dictionary<string, Func<BlazorHeroUser, object>>
+                mappers: new Dictionary<string, Func<PhilcosaUser, object>>
                 {
                     { _localizer["Id"], item => item.Id },
                     { _localizer["FirstName"], item => item.FirstName },

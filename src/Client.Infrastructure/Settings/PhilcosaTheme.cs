@@ -2,7 +2,7 @@
 
 namespace Philcosa.Client.Infrastructure.Settings
 {
-    public class BlazorHeroTheme
+    public class PhilcosaTheme
     {
         private static Typography DefaultTypography = new Typography()
         {

@@ -21,7 +21,7 @@ namespace Philcosa.Infrastructure.Services.Identity
     public class RoleService : IRoleService
     {
         private readonly RoleManager<BlazorHeroRole> _roleManager;
-        private readonly UserManager<BlazorHeroUser> _userManager;
+        private readonly UserManager<PhilcosaUser> _userManager;
         private readonly IRoleClaimService _roleClaimService;
         private readonly IStringLocalizer<RoleService> _localizer;
         private readonly ICurrentUserService _currentUserService;
@@ -30,7 +30,7 @@ namespace Philcosa.Infrastructure.Services.Identity
         public RoleService(
             RoleManager<BlazorHeroRole> roleManager,
             IMapper mapper,
-            UserManager<BlazorHeroUser> userManager,
+            UserManager<PhilcosaUser> userManager,
             IRoleClaimService roleClaimService,
             IStringLocalizer<RoleService> localizer,
             ICurrentUserService currentUserService)

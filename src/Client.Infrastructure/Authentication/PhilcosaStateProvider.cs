@@ -13,12 +13,12 @@ using Philcosa.Shared.Constants.Storage;
 
 namespace Philcosa.Client.Infrastructure.Authentication
 {
-    public class BlazorHeroStateProvider : AuthenticationStateProvider
+    public class PhilcosaStateProvider : AuthenticationStateProvider
     {
         private readonly HttpClient _httpClient;
         private readonly ILocalStorageService _localStorage;
 
-        public BlazorHeroStateProvider(
+        public PhilcosaStateProvider(
             HttpClient httpClient,
             ILocalStorageService localStorage)
         {

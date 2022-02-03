@@ -23,7 +23,7 @@ namespace Philcosa.Client.Extensions
 {
     public static class WebAssemblyHostBuilderExtensions
     {
-        private const string ClientName = "BlazorHero.API";
+        private const string ClientName = "Philcosa.API";
 
         public static WebAssemblyHostBuilder AddRootComponents(this WebAssemblyHostBuilder builder)
         {
@@ -55,8 +55,8 @@ namespace Philcosa.Client.Extensions
                 })
                 .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
                 .AddScoped<ClientPreferenceManager>()
-                .AddScoped<BlazorHeroStateProvider>()
-                .AddScoped<AuthenticationStateProvider, BlazorHeroStateProvider>()
+                .AddScoped<PhilcosaStateProvider>()
+                .AddScoped<AuthenticationStateProvider, PhilcosaStateProvider>()
                 .AddManagers()
                 .AddExtendedAttributeManagers()
                 .AddTransient<AuthenticationHeaderHandler>()

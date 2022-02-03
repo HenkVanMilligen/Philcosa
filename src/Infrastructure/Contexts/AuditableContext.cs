@@ -11,7 +11,7 @@ using Philcosa.Infrastructure.Models.Audit;
 
 namespace Philcosa.Infrastructure.Contexts
 {
-    public abstract class AuditableContext : IdentityDbContext<BlazorHeroUser, BlazorHeroRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, BlazorHeroRoleClaim, IdentityUserToken<string>>
+    public abstract class AuditableContext : IdentityDbContext<PhilcosaUser, BlazorHeroRole, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, BlazorHeroRoleClaim, IdentityUserToken<string>>
     {
         protected AuditableContext(DbContextOptions options) : base(options)
         {
