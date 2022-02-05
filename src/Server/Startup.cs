@@ -14,6 +14,7 @@ using Philcosa.Infrastructure.Extensions;
 using Philcosa.Server.Extensions;
 using Philcosa.Server.Middlewares;
 using Philcosa.Server.Managers.Preferences;
+using Azure.Storage.Blobs;
 
 namespace Philcosa.Server
 {
@@ -52,6 +53,7 @@ namespace Philcosa.Server
             services.AddSharedInfrastructure(_configuration);
             services.RegisterSwagger();
             services.AddInfrastructureMappings();
+            services.AddScoped(x => { return new BlobServiceClient(_configuration.GetConnectionString("AzureBlobStorage")); });
             services.AddHangfire(x => x.UseSqlServerStorage(_configuration.GetConnectionString("DefaultConnection")));
             services.AddHangfireServer();
             services.AddControllers().AddValidators();

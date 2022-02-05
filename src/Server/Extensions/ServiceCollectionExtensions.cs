@@ -45,6 +45,7 @@ using Philcosa.Server.Localization;
 using Philcosa.Server.Settings;
 using Philcosa.Server.Managers.Preferences;
 using Philcosa.Server.Services;
+using Azure.Storage.Blobs;
 
 namespace Philcosa.Server.Extensions
 {
@@ -226,6 +227,7 @@ namespace Philcosa.Server.Extensions
             services.AddTransient<IUploadService, UploadService>();
             services.AddTransient<IAuditService, AuditService>();
             services.AddScoped<IExcelService, ExcelService>();
+            //services.AddScoped(x => { return new BlobServiceClient(configuration.GetConnectionString("AzureBlobStorage")); });
             return services;
         }
 

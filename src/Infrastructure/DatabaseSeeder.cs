@@ -20,6 +20,11 @@ using Bunit.Extensions;
 using System.Formats.Asn1;
 using System.Globalization;
 using CsvHelper;
+using Microsoft.Extensions.Options;
+using Philcosa.Application.Configurations;
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Philcosa.Infrastructure
 {
@@ -27,29 +32,34 @@ namespace Philcosa.Infrastructure
     {
         private readonly ILogger<DatabaseSeeder> _logger;
         private readonly IStringLocalizer<DatabaseSeeder> _localizer;
+        private readonly BlobServiceClient _blobServiceClient;
         private readonly PhilcosaContext _db;
         private readonly UserManager<PhilcosaUser> _userManager;
         private readonly RoleManager<BlazorHeroRole> _roleManager;
-
+        private readonly bool _isDevelopment;
         public DatabaseSeeder(
             UserManager<PhilcosaUser> userManager,
             RoleManager<BlazorHeroRole> roleManager,
             PhilcosaContext db,
             ILogger<DatabaseSeeder> logger,
-            IStringLocalizer<DatabaseSeeder> localizer)
+            IStringLocalizer<DatabaseSeeder> localizer,
+            BlobServiceClient blobServiceClient, 
+            IHostingEnvironment env)
         {
+            _isDevelopment = env.IsDevelopment();
             _userManager = userManager;
             _roleManager = roleManager;
             _db = db;
             _logger = logger;
             _localizer = localizer;
+            _blobServiceClient = blobServiceClient;
         }
 
         public void Initialize()
         {
             AddAdministrator();
             AddBasicUser();
-            //AddDefaultCovers();
+            AddDefaultCovers();
             _db.SaveChanges();
         }
 
@@ -58,17 +68,39 @@ namespace Philcosa.Infrastructure
             //Only run if no covers exist in db
             if (!_db.Covers.Any())
             {
+                
                 Task.Run(async () =>
                 {
+                    
                     var countries = await _db.Countries.ToListAsync();
                     var coverIssuerEntities = await _db.CoverIssuers.ToListAsync();
                     var themes = await _db.Themes.ToListAsync();
                     var types = await _db.CoverTypes.ToListAsync();
                     var values = await _db.CoverValues.ToListAsync();
 
-                    string seedFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Philcosa.Infrastructure\\Seeds\\";
-                    string imagesSeedFolder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Philcosa\\Server\\Files\\Images\\Covers\\";
-                    List<Cover> covers = GetCovers(seedFolder, imagesSeedFolder, countries, coverIssuerEntities, themes, types, values);
+                    string seedFolder = Directory.GetCurrentDirectory() + "/bin/Release/net5.0/Seeds";
+                    if (_isDevelopment)
+                    {
+                        seedFolder = Directory.GetCurrentDirectory() + "/bin/Debug/net5.0/Seeds";
+                    }
+
+                    var blobContainer = _blobServiceClient.GetBlobContainerClient("cover-images");
+
+                    // Call the listing operation and return pages of the specified size.
+                    var resultSegment = blobContainer.GetBlobsAsync()
+                        .AsPages(default, 10);
+
+                    var imageNames = new List<string>();
+                    // Enumerate the blobs returned for each page.
+                    await foreach (Azure.Page<BlobItem> blobPage in resultSegment)
+                    {
+                        foreach (BlobItem blobItem in blobPage.Values)
+                        {
+                            imageNames.Add(blobItem.Name);
+                        }                        
+                    }
+
+                    List<Cover> covers = GetCovers(seedFolder, imageNames, countries, coverIssuerEntities, themes, types, values);
 
                     foreach (var cover in covers)
                     {
@@ -95,13 +127,14 @@ namespace Philcosa.Infrastructure
             }
         }
 
-        private static List<Cover> GetCovers(string seedFolder, string imagesSeedFolder, List<Country> countries, List<CoverIssuer> coverIssuerEntities, List<Theme> themes,
+        private static List<Cover> GetCovers(string seedFolder, List<string> imageNames, List<Country> countries, List<CoverIssuer> coverIssuerEntities, List<Theme> themes,
                                                 List<CoverType> types, List<CoverValue> values)
         {
             string file = Path.Combine(seedFolder, "Covers.csv");
 
-            DirectoryInfo imagesDI = new DirectoryInfo(imagesSeedFolder);
-            FileInfo[] images = imagesDI.GetFiles("*.jpg");
+            //var blobContainer = _blob
+            //DirectoryInfo imagesDI = new DirectoryInfo(imagesSeedFolder);
+            //FileInfo[] images = imagesDI.GetFiles("*.jpg");
 
             var records = new List<Cover>();
             using (var rd = new StreamReader(file))
@@ -169,7 +202,6 @@ namespace Philcosa.Infrastructure
                         coverThemeId++;
                         var coverTheme = new CoverTheme
                         {
-                            Id = coverThemeId,
                             CoverId = id,
                             ThemeId = themeForCover.Id,
                             CreatedBy = "DataSeed",
@@ -181,16 +213,15 @@ namespace Philcosa.Infrastructure
                     }
                     var country = countries.SingleOrDefault(x => x.Code == areaFromCSV);
                     var coverImagesSearchPhrase = $"{country.Code} {date.ToString("yyyyMMdd")}.{numberOnDate}";
-                    var imageForCover = images.Where(x => x.Name.Contains(coverImagesSearchPhrase));
+                    var imageNameForCover = imageNames.Where(x => x.Contains(coverImagesSearchPhrase));
                     string imageFileName = null;
 
-                    if (imageForCover != null && imageForCover.Count() == 1)
+                    if (imageNameForCover != null && imageNameForCover.Count() == 1)
                     {
-                        imageFileName = $"Files\\Images\\Covers\\{imageForCover.SingleOrDefault().Name}";
+                        imageFileName = $"{imageNameForCover.SingleOrDefault()}";
                     }
                     var cover = new Cover
                     {
-                        Id = id,
                         CreatedBy = "DataSeed",
                         CreatedOn = DateTime.Now,
                         LastModifiedBy = null,

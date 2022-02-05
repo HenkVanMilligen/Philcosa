@@ -17,9 +17,18 @@ namespace Philcosa.Infrastructure.Configuration
     {
         public void Configure(EntityTypeBuilder<Cover> builder)
         {
-            //builder.HasOne(c => c.IssuedBy)
+            //builder.HasKey(pt => new { pt.Id });
+
+            //builder.HasOne<Cover>(pt => pt.Cover)
+            //    .WithMany(p => p.CoverThemes)
+            //    .HasForeignKey(pt => pt.CoverId);
+
+            //builder.HasOne<Theme>(pt => pt.Theme)
+            //    .WithMany(p => p.CoverTheme)
+            //    .HasForeignKey(pt => pt.ThemeId);
+            //builder.HasOne<CoverIssuer>(c => c.Cover)
             //    .WithOne(i => i.Cover)
-            //    .HasForeignKey<IssuedByEntity>(c => c.Cover)
+            //    .HasForeignKey<CoverIssuer>(c => c.CoverIssuerId)
         }
 
         //private List<Cover> GetCovers(string seedFolder, List<Country> countries, List<IssuedByEntity> issuedByEntities, List<Theme> themes, List<CoverType> types, List<CoverValue> values)

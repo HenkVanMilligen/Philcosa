@@ -14,6 +14,8 @@ using Philcosa.Domain.Entities;
 using Philcosa.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using System.Diagnostics;
+using Microsoft.Extensions.Options;
+using Philcosa.Application.Configurations;
 
 namespace Philcosa.Infrastructure.Contexts
 {
@@ -22,13 +24,14 @@ namespace Philcosa.Infrastructure.Contexts
         private readonly ICurrentUserService _currentUserService;
         private readonly IDateTimeService _dateTimeService;
         private readonly bool _isDevelopment;
+        
 
         public PhilcosaContext(DbContextOptions<PhilcosaContext> options, ICurrentUserService currentUserService, IDateTimeService dateTimeService, IHostingEnvironment env)
             : base(options)
         {
             _isDevelopment = env.IsDevelopment();
             _currentUserService = currentUserService;
-            _dateTimeService = dateTimeService;
+            _dateTimeService = dateTimeService;            
         }
 
         public DbSet<ChatHistory<PhilcosaUser>> ChatHistories { get; set; }
