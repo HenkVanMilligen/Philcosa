@@ -24,7 +24,7 @@ namespace Philcosa.Infrastructure.Configuration
 
         public void Configure(EntityTypeBuilder<CoverIssuer> builder)
         {
-            string seedFolder = Directory.GetCurrentDirectory() + "/bin/Release/net5.0/Seeds";
+            string seedFolder = Directory.GetCurrentDirectory() + "/Seeds";
             if (IsDevelopment)
             {
                 seedFolder = Directory.GetCurrentDirectory() + "/bin/Debug/net5.0/Seeds";

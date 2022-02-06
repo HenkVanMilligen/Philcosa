@@ -15,11 +15,16 @@ using Philcosa.Server.Extensions;
 using Philcosa.Server.Middlewares;
 using Philcosa.Server.Managers.Preferences;
 using Azure.Storage.Blobs;
+using Microsoft.Extensions.Azure;
+using Azure.Storage.Queues;
+using Azure.Core.Extensions;
+using System;
 
 namespace Philcosa.Server
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -67,6 +72,11 @@ namespace Philcosa.Server
                 config.ReportApiVersions = true;
             });
             services.AddLazyCache();
+            services.AddAzureClients(builder =>
+            {
+                builder.AddBlobServiceClient(_configuration.GetConnectionString("AzureBlobStorage"), preferMsi: true);
+                builder.AddQueueServiceClient(_configuration.GetConnectionString("AzureBlobStorage"), preferMsi: true);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IStringLocalizer<Startup> localizer)
@@ -94,6 +104,31 @@ namespace Philcosa.Server
             app.UseEndpoints();
             app.ConfigureSwagger();
             app.Initialize(_configuration);
+        }
+    }
+    internal static class StartupExtensions
+    {
+        public static IAzureClientBuilder<BlobServiceClient, BlobClientOptions> AddBlobServiceClient(this AzureClientFactoryBuilder builder, string serviceUriOrConnectionString, bool preferMsi)
+        {
+            if (preferMsi && Uri.TryCreate(serviceUriOrConnectionString, UriKind.Absolute, out Uri serviceUri))
+            {
+                return builder.AddBlobServiceClient(serviceUri);
+            }
+            else
+            {
+                return builder.AddBlobServiceClient(serviceUriOrConnectionString);
+            }
+        }
+        public static IAzureClientBuilder<QueueServiceClient, QueueClientOptions> AddQueueServiceClient(this AzureClientFactoryBuilder builder, string serviceUriOrConnectionString, bool preferMsi)
+        {
+            if (preferMsi && Uri.TryCreate(serviceUriOrConnectionString, UriKind.Absolute, out Uri serviceUri))
+            {
+                return builder.AddQueueServiceClient(serviceUri);
+            }
+            else
+            {
+                return builder.AddQueueServiceClient(serviceUriOrConnectionString);
+            }
         }
     }
 }

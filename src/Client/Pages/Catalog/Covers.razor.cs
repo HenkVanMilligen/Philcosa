@@ -18,6 +18,7 @@ using Philcosa.Application.Requests;
 using System.IO;
 using System.Windows.Input;
 using Philcosa.Client.Infrastructure.Commands;
+using System.Threading;
 
 namespace Philcosa.Client.Pages.Catalog
 {
@@ -40,6 +41,7 @@ namespace Philcosa.Client.Pages.Catalog
 
         protected override async Task OnInitializedAsync()
         {
+
             hubConnection = hubConnection.TryInitialize(_navigationManager);
             if (hubConnection.State == HubConnectionState.Disconnected)
             {
@@ -108,76 +110,6 @@ namespace Philcosa.Client.Pages.Catalog
             AuthenticationStateProviderUser = await _stateProvider.GetAuthenticationStateProviderUserAsync();
         }
 
-        //private async Task LoadData(int pageNumber, int pageSize)
-        //{
-        //    pageHasChanged = true;
-        //    var request = new GetAllPagedCoversRequest { PageSize = pageSize, PageNumber = pageNumber + 1, SearchString = searchString };
-        //    var response = await _coverManager.GetCoversAsync(request);
-        //    if (response.Any())
-        //    {
-        //        totalItems = response.Count();
-        //        currentPage = response.CurrentPage;
-        //        var data = response;
-        //        var loadedData = data.Where(element =>
-        //        {
-        //            if (string.IsNullOrWhiteSpace(searchString))
-        //                return true;
-        //            if (element.CoverDate.ToString("yyyyMMdd").Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            if (element.Country?.Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            if (element.CoverType?.Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            if (element.CoverIssuer?.Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            if (element.CoverValue?.Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            if (element.Description?.Contains(searchString, StringComparison.OrdinalIgnoreCase) == true)
-        //                return true;
-        //            return false;
-        //        });
-        //        //switch (state.SortLabel)
-        //        //{
-        //        //    case "coverIdField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.Id);
-        //        //        break;
-        //        //    case "coverCountryField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.Country);
-        //        //        break;
-        //        //    case "coverDateField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.CoverDate);
-        //        //        break;
-        //        //    case "coverTypeField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.CoverType);
-        //        //        break;
-        //        //    case "coverIssuerField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.CoverIssuer);
-        //        //        break;
-        //        //    case "coverNumberField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.Number);
-        //        //        break;
-        //        //    case "coverValueField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.CoverValue);
-        //        //        break;                    
-        //        //    case "coverDescriptionField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.Description);
-        //        //        break;
-        //        //    case "coveraIssuedField":
-        //        //        loadedData = loadedData.OrderByDirection(state.SortDirection, p => p.AmountIssued);
-        //        //        break;
-        //        //}
-        //        data = loadedData.ToList();
-        //        pagedData = data;
-        //    }
-        //    else
-        //    {
-        //        _snackBar.Add("Error retrieving covers", Severity.Error);
-        //        //foreach (var message in response.Messages)
-        //        //{
-        //        //    _snackBar.Add(localizer[message], Severity.Error);
-        //        //}
-        //    }
-        //}
 
         private async Task LoadData(int pageNumber, int pageSize, TableState state)
         {
@@ -336,6 +268,7 @@ namespace Philcosa.Client.Pages.Catalog
 
         private void ShowBtnPress(int id)
         {
+            Console.Out.WriteLine("test");
             var row = pagedData.FirstOrDefault(x => x.Id == id);
             row.ShowDetails = !row.ShowDetails;
         }

@@ -78,7 +78,7 @@ namespace Philcosa.Infrastructure
                     var types = await _db.CoverTypes.ToListAsync();
                     var values = await _db.CoverValues.ToListAsync();
 
-                    string seedFolder = Directory.GetCurrentDirectory() + "/bin/Release/net5.0/Seeds";
+                    string seedFolder = Directory.GetCurrentDirectory() + "/Seeds";
                     if (_isDevelopment)
                     {
                         seedFolder = Directory.GetCurrentDirectory() + "/bin/Debug/net5.0/Seeds";
